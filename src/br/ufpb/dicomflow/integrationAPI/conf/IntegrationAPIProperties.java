@@ -27,7 +27,7 @@ public class IntegrationAPIProperties {
 	public static final String LOG_MIN_SEVERITY ="log.min.severity";
 
 	
-	private static String configFilePath = "conf/config.properties";
+	public static final String CONFIG_FILE_PATH = "conf/config.properties";
 	private static IntegrationAPIProperties instance;
 	private Properties properties;
 	
@@ -41,15 +41,23 @@ public class IntegrationAPIProperties {
 
 	
 	private IntegrationAPIProperties () {
-		super();
+		super();		
+		properties = new Properties();
+		
+	}
+	
+	
+	public void load(String path){
 		try {			
 			//configFilePath = findAppDir() + configFilePath;
 			properties = new Properties();
-			properties.load(new FileInputStream(configFilePath));
+			properties.load(new FileInputStream(path));
 		} catch (Exception e) {
 			//TODO - Log exception
-		}		
+			e.printStackTrace();
+		}
 	}
+	
 	
 	public static String findAppDir() {
 		String path = "";
