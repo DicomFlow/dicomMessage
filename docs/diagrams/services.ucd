@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="services" id="{UMLID=_wfudRO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml}" metadata="uml2-1.0" initialized="true" scrolledX="-35" scrolledY="407" tag="10" key="323030373036323920696E746567726174696F6E415049">
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.9/@sourceConnections.0" name="ServiceIF" location="31,-836" size="145,385" timstampe="5" id="{UMLID=_w4HvIu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF}" runTimeClassModel="setMessageID(Ljava.lang.String;),STORAGE_UPDATE,setName(Ljava.lang.String;),setTimeout(Ljava.lang.String;),setTimestamp(Ljava.lang.String;),setType(I),getMessageID(),getVersion(),getAction(),getTimeout(),setAction(Ljava.lang.String;),getName(),getType(),getTimestamp(),STORAGE_DELETE,STORAGE_RESULT,STORAGE_SAVE,setVersion(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="124,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_SAVE" size="113,16" id="{UMLID=_w9CEVu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_UPDATE" size="124,16" id="{UMLID=_w9CEUO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_DELETE" size="122,16" id="{UMLID=_w9CEUu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_RESULT" size="123,16" id="{UMLID=_w9CEVO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,252">
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_w9CEYe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getType()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setType" size="78,16" id="{UMLID=_w9U_Re3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setType(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVersion" size="92,16" id="{UMLID=_w9L1W-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getVersion()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVersion" size="92,16" id="{UMLID=_w9CEXu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setVersion(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" size="82,16" id="{UMLID=_w9L1Xu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getName()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setName" size="82,16" id="{UMLID=_w9U_Qu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setName(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAction" size="86,16" id="{UMLID=_w9U_SO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getAction()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAction" size="86,16" id="{UMLID=_w9L1Uu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setAction(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessageID" size="108,16" id="{UMLID=_w9CEWO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getMessageID()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMessageID" size="108,16" id="{UMLID=_w9L1ZO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setMessageID(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTimestamp" size="106,16" id="{UMLID=_w9L1WO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getTimestamp()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimestamp" size="106,16" id="{UMLID=_w9L1Ye3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setTimestamp(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTimeout" size="92,16" id="{UMLID=_w9CEW-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#getTimeout()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimeout" size="92,16" id="{UMLID=_w9L1Ve3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/ServiceIF#setTimeout(Ljava.lang.String;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Completed" location="-25,54" size="170,155" timstampe="6" stereotype="" id="{UMLID=_wf3nMO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Completed}" runTimeClassModel="getCompletedMessage(),completedMessage,setStatus(Ljava.lang.String;),getStatus(),setCompletedMessage(Ljava.lang.String;),status">
+    <children xsi:type="editmodel:CompartmentEditModel" size="122,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="status" size="59,16" id="{UMLID=_wjlpk-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="completedMessage" size="122,16" id="{UMLID=_wjJksO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="149,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getStatus" size="86,16" id="{UMLID=_wkCVgO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Completed#getStatus()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setStatus" size="86,16" id="{UMLID=_wjlple3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Completed#setStatus(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCompletedMessage" size="149,16" id="{UMLID=_wkCVhu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Completed#getCompletedMessage()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCompletedMessage" size="149,16" id="{UMLID=_wkCVg-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Completed#setCompletedMessage(Ljava.lang.String;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_w2ohY-3uEeWWks3fazj3Ug}" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="completed" location="170,77" id="{UMLID=_w1l_me3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.1/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="152,138" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- completed" location="152,110" size="56,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="0,127" id="{UMLID=_w2ohZO3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.1/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="243,110" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Credentials" location="647,296" size="112,101" timstampe="6" stereotype="" id="{UMLID=_wvWNoe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Credentials}" runTimeClassModel="getValue(),value,setValue(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="55,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="value" size="55,16" id="{UMLID=_wvfXkO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="82,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" size="82,16" id="{UMLID=_wvfXku3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Credentials#getValue()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" size="82,16" id="{UMLID=_wvfXle3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Credentials#setValue(Ljava.lang.String;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_wxbRQe3uEeWWks3fazj3Ug}" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="credential" location="10,0" id="{UMLID=_wwrqYO3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="644,275" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- credential" location="664,275" size="54,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="130,214" id="{UMLID=_wxbRQu3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.2/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="635,213" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_xHSzke3uEeWWks3fazj3Ug}" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="credentials" location="102,0" id="{UMLID=_xGs9sO3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.1/@children.1/@children.0" roleLabel="//@children.2/@sourceConnections.1/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="756,275" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- credentials" location="682,275" size="60,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="0,160" id="{UMLID=_xHSzku3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.2/@sourceConnections.1/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="788,171" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1" name="URL" location="801,32" size="136,170" timstampe="7" stereotype="" id="{UMLID=_xCsAaO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/URL}" runTimeClassModel="credentials,getValue(),getCredentials(),setCredentials(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Credentials;),value,setValue(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="55,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="value" size="55,16" id="{UMLID=_xGs9su3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="credentials" size="88,21" id="{UMLID=_xGs9sO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="115,82">
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" size="82,16" id="{UMLID=_xGs9t-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/URL#getValue()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setValue" size="82,16" id="{UMLID=_xGs9tO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/URL#setValue(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCredentials" size="115,21" id="{UMLID=_xGs9uu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/URL#getCredentials()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCredentials" size="115,21" id="{UMLID=_xG2usu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/URL#setCredentials(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Credentials;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_xF9W0-3uEeWWks3fazj3Ug}" source="//@children.3" target="//@children.10" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="url" location="42,0" id="{UMLID=_xELOJu3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.3/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="830,11" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- url" location="850,11" size="19,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="153,258" id="{UMLID=_xF9W1O3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.3/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="850,-12" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_xDkxMe3uEeWWks3fazj3Ug}" source="//@children.3" target="//@children.8" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="url" location="125,0" id="{UMLID=_xCsAZu3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.1/@children.1/@children.0" roleLabel="//@children.3/@sourceConnections.1/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="913,11" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- url" location="933,11" size="19,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="10,189" id="{UMLID=_xDkxMu3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.3/@sourceConnections.1/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="933,-81" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="Result" location="256,4" size="165,293" timstampe="16" stereotype="" id="{UMLID=_w02YsO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result}" runTimeClassModel="getOriginalMessageID(),getCompleted(),setObjects(LCollection;),setTimestamp(Ljava.lang.String;),objects,getTimestamp(),originalMessageID,completed,getObjects(),setOriginalMessageID(Ljava.lang.String;),setCompleted(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Completed;),timestamp">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="originalMessageID" size="116,16" id="{UMLID=_w1l_l-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timestamp" size="77,16" id="{UMLID=_w1l_m-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="objects" size="70,21" id="{UMLID=_w1JToO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="completed" size="84,21" id="{UMLID=_w1l_me3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="144,164">
+      <children xsi:type="editmodel:MethodEditModel" name="getOriginalMessageID" size="144,16" id="{UMLID=_w1vwn-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#getOriginalMessageID()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setOriginalMessageID" size="144,16" id="{UMLID=_w146gO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#setOriginalMessageID(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTimestamp" size="106,16" id="{UMLID=_w1vwme3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#getTimestamp()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimestamp" size="106,16" id="{UMLID=_w1vwlu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#setTimestamp(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getObjects" size="98,21" id="{UMLID=_w1vwkO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#getObjects()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setObjects" size="98,21" id="{UMLID=_t11tEO3yEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#setObjects(LCollection;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCompleted" size="111,21" id="{UMLID=_w1vwnO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#getCompleted()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCompleted" size="111,21" id="{UMLID=_w1vwk-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Result#setCompleted(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Completed;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_w2ohYe3uEeWWks3fazj3Ug}" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="165,127" id="{UMLID=_w2ohYu3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="428,110" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="objects" location="0,111" id="{UMLID=_w1JToO3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.4/@sourceConnections.0/@children.2/@children.0" roleLabel="//@children.4/@sourceConnections.0/@children.2/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1..*" location="475,138" size="16,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- objects" location="449,110" size="42,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_xCPUcO3uEeWWks3fazj3Ug}" source="//@children.4" target="//@children.7" targetEnd="//@children.4/@sourceConnections.1/@children.2" label="//@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="result" location="82,0" id="{UMLID=_xAdLwu3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.1/@children.1/@children.0" roleLabel="//@children.4/@sourceConnections.1/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1..*" location="315,-17" size="16,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- result" location="345,-17" size="34,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="97,188" id="{UMLID=_xCPUce3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.4/@sourceConnections.1/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="345,-81" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0 //@children.2/@sourceConnections.0" name="Object" location="498,20" size="130,224" timstampe="7" stereotype="" id="{UMLID=_wwYvcO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object}" runTimeClassModel="setCredential(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Credentials;),setId(Ljava.lang.String;),setType(Ljava.lang.String;),getId(),getCredential(),credential,getType(),id,type">
+    <children xsi:type="editmodel:CompartmentEditModel" size="50,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="type" size="50,16" id="{UMLID=_wwrqZO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" size="37,16" id="{UMLID=_wwrqYu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="credential" size="82,21" id="{UMLID=_wwrqYO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,118">
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_ww1bYu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#getType()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setType" size="78,16" id="{UMLID=_wwrqae3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#setType(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" size="63,16" id="{UMLID=_wwrqZu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#getId()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" size="63,16" id="{UMLID=_ww1bZe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#setId(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCredential" size="109,21" id="{UMLID=_wwrqb-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#getCredential()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCredential" size="109,21" id="{UMLID=_wwrqbO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Object#setCredential(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Credentials;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_w_2u0e3uEeWWks3fazj3Ug}" source="//@children.5" target="//@children.6" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="object" location="65,0" id="{UMLID=_w-9-AO3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.5/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1..*" location="540,-1" size="16,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- object" location="570,-1" size="36,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="97,188" id="{UMLID=_w_2u0u3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.5/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="570,-81" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_xF9W0e3uEeWWks3fazj3Ug}" source="//@children.5" target="//@children.10" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="object" location="130,10" id="{UMLID=_xELOKO3uEeWWks3fazj3Ug}" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.1/@children.1/@children.0" roleLabel="//@children.5/@sourceConnections.1/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="635,9" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- object" location="635,37" size="36,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="10,257" id="{UMLID=_xF9W0u3uEeWWks3fazj3Ug}" multiplicityLabel="//@children.5/@sourceConnections.1/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="707,-12" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="StorageDelete" location="466,-276" size="194,188" timstampe="7" stereotype="" id="{UMLID=_w-rDEO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageDelete}" runTimeClassModel="STORAGE_DELETE_VERSION,setObject(LCollection;),STORAGE_DELETE_NAME,STORAGE_DELETE_ACTION,getObject(),object,StorageDelete()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="173,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_DELETE_NAME" size="157,16" id="{UMLID=_w-0NAu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_DELETE_ACTION" size="166,16" id="{UMLID=_w-0NBO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_DELETE_VERSION" size="173,16" id="{UMLID=_w-0NAO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="object" size="64,21" id="{UMLID=_w-9-AO3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,64">
+      <children xsi:type="editmodel:MethodEditModel" name="StorageDelete" size="108,16" id="{UMLID=_w-9-Ce3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageDelete#StorageDelete()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getObject" size="92,21" id="{UMLID=_w-9-A-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageDelete#getObject()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setObject" size="92,21" id="{UMLID=_w-9-Bu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageDelete#setObject(LCollection;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_w-rDEu3uEeWWks3fazj3Ug}" source="//@children.6" target="//@children.7/@sourceConnections.0" targetEnd="//@children.6/@sourceConnections.0/@children.1" sourceEnd="//@children.6/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="97,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,451"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.1" name="StorageResult" location="241,-276" size="195,188" timstampe="19" stereotype="" id="{UMLID=_xATawO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageResult}" runTimeClassModel="STORAGE_RESULT_VERSION,result,StorageResult(),getResult(),STORAGE_RESULT_ACTION,setResult(LCollection;),STORAGE_RESULT_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="174,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_RESULT_NAME" size="158,16" id="{UMLID=_xAdLx-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_RESULT_ACTION" size="167,16" id="{UMLID=_xAdLxe3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_RESULT_VERSION" size="174,16" id="{UMLID=_xAdLwO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="result" size="62,21" id="{UMLID=_xAdLwu3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,64">
+      <children xsi:type="editmodel:MethodEditModel" name="StorageResult" size="108,16" id="{UMLID=_xAmVte3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageResult#StorageResult()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setResult" size="91,21" id="{UMLID=_Vx6kl-3zEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageResult#setResult(LCollection;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getResult" size="91,21" id="{UMLID=_xAdLye3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageResult#getResult()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.10/@sourceConnections.0 //@children.8/@sourceConnections.0" size="2,1" autoLocated="true" id="{UMLID=_xATawu3uEeWWks3fazj3Ug}" source="//@children.7" target="//@children.9" targetEnd="//@children.7/@sourceConnections.0/@children.1" sourceEnd="//@children.7/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="97,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="64,461" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.1" name="StorageSave" location="916,-276" size="185,188" timstampe="5" stereotype="" id="{UMLID=_xCiPYO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageSave}" runTimeClassModel="STORAGE_SAVE_ACTION,STORAGE_SAVE_NAME,getUrl(),STORAGE_SAVE_VERSION,setUrl(Lbr.ufpb.infrapacs.integrationAPI.message.xml.URL;),StorageSave(),url">
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_SAVE_NAME" size="148,16" id="{UMLID=_xCsAYu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_SAVE_ACTION" size="157,16" id="{UMLID=_xCsAYO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_SAVE_VERSION" size="164,16" id="{UMLID=_xCsAZO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="url" size="47,21" id="{UMLID=_xCsAZu3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="103,64">
+      <children xsi:type="editmodel:MethodEditModel" name="StorageSave" size="103,16" id="{UMLID=_xC1KV-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageSave#StorageSave()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUrl" size="74,21" id="{UMLID=_xC1KVO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageSave#getUrl()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUrl" size="74,21" id="{UMLID=_xC1KUe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageSave#setUrl(Lbr.ufpb.infrapacs.integrationAPI.message.xml.URL;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_xCiPYu3uEeWWks3fazj3Ug}" source="//@children.8" target="//@children.7/@sourceConnections.0" targetEnd="//@children.8/@sourceConnections.0/@children.1" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="92,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,277"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0" name="Service" location="602,-840" size="129,461" timstampe="19" stereotype="" id="{UMLID=_w4HvIO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service}" runTimeClassModel="setMessageID(Ljava.lang.String;),setName(Ljava.lang.String;),setTimestamp(Ljava.lang.String;),setTimeout(Ljava.lang.String;),setType(I),messageID,Service(),getMessageID(),type,version,getVersion(),timeout,getAction(),Service(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),setAction(Ljava.lang.String;),getTimeout(),getName(),getType(),name,getTimestamp(),action,timestamp,setVersion(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="82,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="version" size="65,16" id="{UMLID=_w4aqF-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" size="55,16" id="{UMLID=_w4RgIO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="action" size="58,16" id="{UMLID=_w4aqEe3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="type" size="50,16" id="{UMLID=_w4aqFe3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="messageID" size="82,16" id="{UMLID=_w4aqE-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timestamp" size="77,16" id="{UMLID=_w4aqG-3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timeout" size="63,16" id="{UMLID=_w4aqGe3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,288">
+      <children xsi:type="editmodel:MethodEditModel" name="Service" size="77,16" id="{UMLID=_w4uMF-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#Service()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Service" size="77,16" id="{UMLID=_w4uMIe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#Service(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVersion" size="92,16" id="{UMLID=_w4uMG-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getVersion()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVersion" size="92,16" id="{UMLID=_w4kbGO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setVersion(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" size="82,16" id="{UMLID=_w4aqIO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getName()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setName" size="82,16" id="{UMLID=_w4kbEu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setName(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAction" size="86,16" id="{UMLID=_w4aqHe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getAction()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAction" size="86,16" id="{UMLID=_w4kbG-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setAction(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessageID" size="108,16" id="{UMLID=_w4kbHu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getMessageID()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMessageID" size="108,16" id="{UMLID=_w4uMFO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setMessageID(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTimestamp" size="106,16" id="{UMLID=_w4kbFe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getTimestamp()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimestamp" size="106,16" id="{UMLID=_w4kbIe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setTimestamp(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTimeout" size="92,16" id="{UMLID=_w4uMEe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getTimeout()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTimeout" size="92,16" id="{UMLID=_w4uMHu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setTimeout(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_w4uMGO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#getType()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setType" size="78,16" id="{UMLID=_w4aqI-3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/Service#setType(I)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="Implementation" autoLocated="true" id="{UMLID=_ZSvKgO30EeWWks3fazj3Ug}" source="//@children.9" target="//@children.0" targetEnd="//@children.9/@sourceConnections.0/@children.1" label="//@children.9/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,197" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="145,193"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="91,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.3/@sourceConnections.0" name="StorageUpdate" location="690,-276" size="196,257" timstampe="7" stereotype="" id="{UMLID=_xD4TMO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate}" runTimeClassModel="STORAGE_UPDATE_NAME,STORAGE_UPDATE_ACTION,STORAGE_UPDATE_VERSION,StorageUpdate(),setObject(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Object;),getUrl(),getObject(),setUrl(Lbr.ufpb.infrapacs.integrationAPI.message.xml.URL;),url,object">
+    <children xsi:type="editmodel:CompartmentEditModel" size="175,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_UPDATE_NAME" size="159,16" id="{UMLID=_xELOIO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_UPDATE_ACTION" size="168,16" id="{UMLID=_xELOIu3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="STORAGE_UPDATE_VERSION" size="175,16" id="{UMLID=_xELOJO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="object" size="64,21" id="{UMLID=_xELOKO3uEeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="url" size="47,21" id="{UMLID=_xELOJu3uEeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="112,110">
+      <children xsi:type="editmodel:MethodEditModel" name="StorageUpdate" size="112,16" id="{UMLID=_xELOMO3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate#StorageUpdate()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getObject" size="92,21" id="{UMLID=_xELOMe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate#getObject()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setObject" size="92,21" id="{UMLID=_xEUYEe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate#setObject(Lbr.ufpb.infrapacs.integrationAPI.message.xml.Object;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUrl" size="74,21" id="{UMLID=_xELOKu3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate#getUrl()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUrl" size="74,21" id="{UMLID=_xELOLe3uEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.message.xml/StorageUpdate#setUrl(Lbr.ufpb.infrapacs.integrationAPI.message.xml.URL;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_xEBdIO3uEeWWks3fazj3Ug}" source="//@children.10" target="//@children.7/@sourceConnections.0" targetEnd="//@children.10/@sourceConnections.0/@children.1" sourceEnd="//@children.10/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="98,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,128"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=3" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="-28,420" rulerUnit="cm" gridShow="true">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" id="{UMLID=_6NdCoO31EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail}" metadata="uml2-1.0" initialized="true" tag="10" key="323030373036323920696E746567726174696F6E415049">
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.9/@children.0/@children.2/@sourceConnections.0 //@children.5/@children.0/@children.3/@sourceConnections.0" name="MailHeadStrategyIF" location="672,588" size="172,133" timstampe="113" id="{UMLID=_DdayIO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailHeadStrategyIF}" runTimeClassModel="SMTP_HEAD_STRATEGY,getType(),buildHead(L/lib/javax.javax.mail.Message;Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;Lbr.ufpb.infrapacs.integrationAPI.mail.MailContentStrategyIF;),getHeaderValue(L/lib/javax.javax.mail.Message;Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="151,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="SMTP_HEAD_STRATEGY" size="151,16" id="{UMLID=_DdayI-32EeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,36">
+      <children xsi:type="editmodel:MethodEditModel" name="buildHead" size="99,16" id="{UMLID=_DdkjIe32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailHeadStrategyIF#buildHead(L/lib/javax.javax.mail.Message;Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;Lbr.ufpb.infrapacs.integrationAPI.mail.MailContentStrategyIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeaderValue" size="117,16" id="{UMLID=_5KWahu4vEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailHeadStrategyIF#getHeaderValue(L/lib/javax.javax.mail.Message;Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_DdttF-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailHeadStrategyIF#getType()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.9/@children.0/@children.3/@sourceConnections.0" name="MailContentStrategyIF" location="1232,714" size="232,133" timstampe="34" id="{UMLID=_Dew18e32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailContentStrategyIF}" runTimeClassModel="buildContent(L/lib/javax.javax.mail.Message;Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;),getType(),SMTP_SIMPLE_CONTENT_STRATEGY,getService(L/lib/javax.javax.mail.Multipart;I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="211,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="SMTP_SIMPLE_CONTENT_STRATEGY" size="211,16" id="{UMLID=_De5_4e32EeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="92,54">
+      <children xsi:type="editmodel:MethodEditModel" name="buildContent" size="92,16" id="{UMLID=_De5_4-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailContentStrategyIF#buildContent(L/lib/javax.javax.mail.Message;Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_DfDw7O32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailContentStrategyIF#getType()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getService" size="92,16" id="{UMLID=_DfDw4-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailContentStrategyIF#getService(L/lib/javax.javax.mail.Multipart;I)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.5/@children.0/@children.1/@sourceConnections.0 //@children.9/@children.0/@children.1/@sourceConnections.0" name="MailAuthenticatorIF" location="658,406" size="164,115" timstampe="3" id="{UMLID=_Dgi-oO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailAuthenticatorIF}" runTimeClassModel="getPassword(),getAuthenticator(),getEmail()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,54">
+      <children xsi:type="editmodel:MethodEditModel" name="getEmail" location="29,8" size="79,16" id="{UMLID=_DpUgI-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailAuthenticatorIF#getEmail()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPassword" size="105,16" id="{UMLID=_DpLWMO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailAuthenticatorIF#getPassword()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticator" size="120,16" id="{UMLID=_DpLWM-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailAuthenticatorIF#getAuthenticator()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.5/@children.0/@children.2/@sourceConnections.0" name="MailMessageStrategyIF" location="31,651" size="194,115" timstampe="8" id="{UMLID=_DpxMEe32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailMessageStrategyIF}" runTimeClassModel="SMTP_MESSAGE_STRATEGY,getType(),getMessages(L/lib/javax.javax.mail.Session;Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="173,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="SMTP_MESSAGE_STRATEGY" size="173,16" id="{UMLID=_Dp69EO32EeWWks3fazj3Ug}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getMessages" size="105,16" id="{UMLID=_Dp69Fe32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailMessageStrategyIF#getMessages(L/lib/javax.javax.mail.Session;Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;)}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_ZUoUMO4xEeWWks3fazj3Ug}" source="//@children.3/@children.1/@children.0" target="//@children.4" targetEnd="//@children.3/@children.1/@children.0/@sourceConnections.0/@children.1" label="//@children.3/@children.1/@children.0/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.1/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="95,16" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="0,10"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+      <children xsi:type="editmodel:MethodEditModel" name="getType" size="78,16" id="{UMLID=_Dp69Eu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailMessageStrategyIF#getType()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@children.1/@children.0/@sourceConnections.0" name="FilterIF" location="374,700" size="136,133" timstampe="3" id="{UMLID=_DqEHA-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/FilterIF}" runTimeClassModel="setId(Ljava.lang.String;),setInitialDate(Ljava.util.Date;),setServiceType(I),setFinalDate(Ljava.util.Date;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="115,72">
+      <children xsi:type="editmodel:MethodEditModel" name="setInitialDate" size="100,16" id="{UMLID=_Dqzt4O32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/FilterIF#setInitialDate(Ljava.util.Date;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFinalDate" size="99,16" id="{UMLID=_Dq9e6u32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/FilterIF#setFinalDate(Ljava.util.Date;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setServiceType" size="115,16" id="{UMLID=_Dq9e5O32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/FilterIF#setServiceType(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" size="63,16" id="{UMLID=_Dq9e5-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/FilterIF#setId(Ljava.lang.String;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SMTPReceiver" location="352,344" size="180,308" timstampe="52" stereotype="" id="{UMLID=_DtVdcu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver}" runTimeClassModel="getMessageBuilder(),setAuthenticatorBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailAuthenticatorIF;),authenticatorBuilder,getHeadBuilder(),setHeadBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailHeadStrategyIF;),headBuilder,getProperties(),messageBuilder,setMessageBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailMessageStrategyIF;),properties,getAuthenticatorBuilder(),setProperties(Ljava.util.Properties;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="properties" size="78,16" id="{UMLID=_D1X_Iu32EeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="authenticatorBuilder" size="131,21" id="{UMLID=_D1OOIe32EeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_3JfBsO39EeWWks3fazj3Ug}" source="//@children.5/@children.0/@children.1" target="//@children.2" targetEnd="//@children.5/@children.0/@children.1/@sourceConnections.0/@children.1" label="//@children.5/@children.0/@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@children.0/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="121,21" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="0,10"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="messageBuilder" size="112,21" id="{UMLID=_D1X_IO32EeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_zS-DIO39EeWWks3fazj3Ug}" source="//@children.5/@children.0/@children.2" target="//@children.3" targetEnd="//@children.5/@children.0/@children.2/@sourceConnections.0/@children.1" label="//@children.5/@children.0/@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@children.0/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="0,11" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="184,0"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="headBuilder" size="59,21" id="{UMLID=__dYe0O4vEeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_hrBM0O4wEeWWks3fazj3Ug}" source="//@children.5/@children.0/@children.3" target="//@children.0" targetEnd="//@children.5/@children.0/@children.3/@sourceConnections.0/@children.1" label="//@children.5/@children.0/@children.3/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@children.0/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="59,11" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="10,0"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,128">
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_D1X_Ku32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setProperties" size="104,16" id="{UMLID=_D1X_MO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#setProperties(Ljava.util.Properties;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="159,21" id="{UMLID=_D1X_JO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAuthenticatorBuilder" size="159,21" id="{UMLID=_D1X_J-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#setAuthenticatorBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailAuthenticatorIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessageBuilder" size="138,21" id="{UMLID=_D1hJEO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#getMessageBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMessageBuilder" size="138,21" id="{UMLID=_D1X_Le32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#setMessageBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailMessageStrategyIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="119,21" id="{UMLID=_EGU_4e4wEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#getHeadBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeadBuilder" size="119,21" id="{UMLID=_FkWdFu4wEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPReceiver#setHeadBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailHeadStrategyIF;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_D1OOIO32EeWWks3fazj3Ug}" source="//@children.5" target="//@children.6" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="86,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="86,137"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="AbstractMailReceiver" location="352,155" size="174,137" timstampe="139" stereotype="" id="{UMLID=_DtVdcO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver}" runTimeClassModel="getMessageBuilder(),getHeadBuilder(),getProperties(),receive(Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;),getAuthenticatorBuilder()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="132,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_DtfOc-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="113,16" id="{UMLID=_ok5EJO4vEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver#getHeadBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessageBuilder" size="132,16" id="{UMLID=_DtfOcO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver#getMessageBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="153,16" id="{UMLID=_-SjIaO34EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="receive" size="76,16" id="{UMLID=_Dto_cO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailReceiver#receive(Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="Implementation" autoLocated="true" id="{UMLID=_p9ZfEO32EeWWks3fazj3Ug}" source="//@children.6" target="//@children.8" targetEnd="//@children.6/@sourceConnections.0/@children.1" label="//@children.6/@sourceConnections.0/@children.2" sourceEnd="//@children.6/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,68" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,66"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="91,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.8/@sourceConnections.0" name="ReceiverIF" location="84,28" size="108,79" timstampe="6" id="{UMLID=_DrjUwO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/ReceiverIF}" runTimeClassModel="receive(Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="76,18">
+      <children xsi:type="editmodel:MethodEditModel" name="receive" size="76,16" id="{UMLID=_DrjUwu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/ReceiverIF#receive(Lbr.ufpb.infrapacs.integrationAPI.mail.FilterIF;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.6/@sourceConnections.0" name="MailReceiverIF" location="51,157" size="174,133" timstampe="13" id="{UMLID=_DsJxsO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailReceiverIF}" runTimeClassModel="getMessageBuilder(),getHeadBuilder(),getProperties(),getAuthenticatorBuilder()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="153,54">
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_DsJxs-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailReceiverIF#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="153,16" id="{UMLID=_DsS7oe32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailReceiverIF#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessageBuilder" size="132,16" id="{UMLID=_DsS7pO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailReceiverIF#getMessageBuilder()}" showHidePreferences="62"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="113,16" id="{UMLID=_slsnJO4vEeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailReceiverIF#getHeadBuilder()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_DsJxsu32EeWWks3fazj3Ug}" source="//@children.8" target="//@children.7" targetEnd="//@children.8/@sourceConnections.0/@children.1" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="87,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="54,79"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SMTPSender" location="1005,344" size="180,326" timstampe="5" stereotype="" id="{UMLID=_Dhlgc-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender}" runTimeClassModel="contentBuilder,getContentBuilder(),setAuthenticatorBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailAuthenticatorIF;),authenticatorBuilder,setContentBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailContentStrategyIF;),getHeadBuilder(),setHeadBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailHeadStrategyIF;),headBuilder,getProperties(),properties,getAuthenticatorBuilder(),setProperties(Ljava.util.Properties;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="properties" size="78,16" id="{UMLID=_DmM6te32EeWWks3fazj3Ug}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="authenticatorBuilder" size="131,21" id="{UMLID=_DmM6se32EeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_H1-NIO3-EeWWks3fazj3Ug}" source="//@children.9/@children.0/@children.1" target="//@children.2" targetEnd="//@children.9/@children.0/@children.1/@sourceConnections.0/@children.1" label="//@children.9/@children.0/@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@children.0/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="10,21" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="164,10"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="headBuilder" size="92,21" id="{UMLID=_DmM6s-32EeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_RdAY0O3-EeWWks3fazj3Ug}" source="//@children.9/@children.0/@children.2" target="//@children.0" targetEnd="//@children.9/@children.0/@children.2/@sourceConnections.0/@children.1" label="//@children.9/@children.0/@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@children.0/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="0,11" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="162,0"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="contentBuilder" size="104,21" id="{UMLID=_DmDJsO32EeWWks3fazj3Ug}">
+        <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="usage" autoLocated="true" id="{UMLID=_P9o30O3-EeWWks3fazj3Ug}" source="//@children.9/@children.0/@children.3" target="//@children.1" targetEnd="//@children.9/@children.0/@children.3/@sourceConnections.0/@children.1" label="//@children.9/@children.0/@children.3/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@children.0/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="104,11" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" location="10,0"/>
+          <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        </sourceConnections>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,174">
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_DmWEoe32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="159,21" id="{UMLID=_DmM6wO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="119,21" id="{UMLID=_DmWEpO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#getHeadBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getContentBuilder" size="131,21" id="{UMLID=_DmM6ve32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#getContentBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setProperties" size="104,16" id="{UMLID=_DmWEp-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#setProperties(Ljava.util.Properties;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAuthenticatorBuilder" size="159,21" id="{UMLID=_DmM6t-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#setAuthenticatorBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailAuthenticatorIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeadBuilder" size="119,21" id="{UMLID=_DmWEqu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#setHeadBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailHeadStrategyIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setContentBuilder" size="131,21" id="{UMLID=_DmM6uu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail.impl/SMTPSender#setContentBuilder(Lbr.ufpb.infrapacs.integrationAPI.mail.MailContentStrategyIF;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_Dl5YsO32EeWWks3fazj3Ug}" source="//@children.9" target="//@children.10" targetEnd="//@children.9/@sourceConnections.0/@children.1" sourceEnd="//@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="87,137"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.9/@sourceConnections.0" name="AbstractMailSender" location="1008,146" size="174,137" timstampe="248" stereotype="" id="{UMLID=_DhlgcO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender}" runTimeClassModel="getContentBuilder(),getHeadBuilder(),send(Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;),getProperties(),getAuthenticatorBuilder()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="153,90">
+      <children xsi:type="editmodel:MethodEditModel" name="send" size="64,16" id="{UMLID=_DhvRcO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender#send(Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_Dh4bZu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="153,16" id="{UMLID=_Dh4bae32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="113,16" id="{UMLID=_Dh4bYO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender#getHeadBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getContentBuilder" size="125,16" id="{UMLID=_Dh4bY-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/AbstractMailSender#getContentBuilder()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" description="Implementation" autoLocated="true" id="{UMLID=_s-DzsO32EeWWks3fazj3Ug}" source="//@children.10" target="//@children.12" targetEnd="//@children.10/@sourceConnections.0/@children.1" label="//@children.10/@sourceConnections.0/@children.2" sourceEnd="//@children.10/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,74" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,63"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="91,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.12/@sourceConnections.0" name="SenderIF" location="672,28" size="98,79" timstampe="6" id="{UMLID=_DfpmwO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/SenderIF}" runTimeClassModel="send(Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="64,18">
+      <children xsi:type="editmodel:MethodEditModel" name="send" size="64,16" id="{UMLID=_DfzXwO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/SenderIF#send(Lbr.ufpb.infrapacs.integrationAPI.message.xml.ServiceIF;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.10/@sourceConnections.0" name="MailSenderIF" location="634,157" size="174,133" timstampe="9" id="{UMLID=_DgQDsO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailSenderIF}" runTimeClassModel="getContentBuilder(),getHeadBuilder(),getProperties(),getAuthenticatorBuilder()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="153,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getProperties" size="104,16" id="{UMLID=_DgZNoO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailSenderIF#getProperties()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadBuilder" size="113,16" id="{UMLID=_Dgi-pO32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailSenderIF#getHeadBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthenticatorBuilder" size="153,16" id="{UMLID=_DgZNpu32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailSenderIF#getAuthenticatorBuilder()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getContentBuilder" size="125,16" id="{UMLID=_Dgi-p-32EeWWks3fazj3Ug,JavaID=br.ufpb.infrapacs.integrationAPI.mail/MailSenderIF#getContentBuilder()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_DgQDsu32EeWWks3fazj3Ug}" source="//@children.12" target="//@children.11" targetEnd="//@children.12/@sourceConnections.0/@children.1" sourceEnd="//@children.12/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="87,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,79"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="0,0" rulerUnit="cm" gridShow="true">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>
