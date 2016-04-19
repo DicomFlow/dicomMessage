@@ -28,6 +28,7 @@ public class ServiceProcessor {
 			obj.setTimestamp(System.currentTimeMillis()+"");
 			
 			if(props == null){
+				IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
 				props = IntegrationAPIProperties.getInstance().getSendProperties();
 			}
 			
@@ -64,6 +65,7 @@ public class ServiceProcessor {
 		
 		try{
 			if(props == null){
+				IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
 				props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 			}
 			
