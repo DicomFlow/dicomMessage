@@ -1,7 +1,10 @@
 package br.ufpb.dicomflow.integrationAPI.main;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
+
+import javax.mail.Message;
 
 import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
@@ -22,7 +25,7 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 
 public class ServiceProcessor {
 
-	public static void sendMessage(ServiceIF obj, String destinationMail, Properties props, MailAuthenticatorIF mailAuthenticator, MailHeadBuilderIF mailHeadBuilder, MailContentBuilderIF mailContentBuilder) throws ServiceCreationException {
+	public static String sendMessage(ServiceIF obj, String destinationMail, Properties props, MailAuthenticatorIF mailAuthenticator, MailHeadBuilderIF mailHeadBuilder, MailContentBuilderIF mailContentBuilder) throws ServiceCreationException {
 		
 		try {
 			obj.setTimestamp(System.currentTimeMillis()+"");
@@ -53,7 +56,7 @@ public class ServiceProcessor {
 	        sender.setHeadBuilder(mailHeadBuilder);
 	        sender.setContentBuilder(mailContentBuilder);
 	        
-	        sender.send(obj);
+	        return sender.send(obj);
 
 		} catch (Exception e) {
 			throw new ServiceCreationException(e.getMessage());
@@ -88,6 +91,40 @@ public class ServiceProcessor {
 			receiver.setServiceExtractor(mailServiceExtractor);
 			
 			return receiver.receive(filter);
+		} catch (Exception e) {
+			throw new ServiceCreationException(e.getMessage());
+		}
+		
+		
+	}
+	
+public static List<Message> receiveMessages(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
+		
+		try{
+			if(props == null){
+				IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+				props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+			}
+			
+			if (mailAuthenticator == null) {
+				mailAuthenticator =  new SMTPAuthenticator(props.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), props.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
+			}
+			
+			if(mailServiceExtractor == null){
+				mailServiceExtractor = new SMTPServiceExtractor();
+			}
+			
+			if(mailMessageReader == null){
+				mailMessageReader = new SMTPMessageReader(props.getProperty(IntegrationAPIProperties.PROVIDER_HOST), props.getProperty(IntegrationAPIProperties.PROVIDER_FOLDER));
+			}
+			
+			SMTPReceiver receiver = new SMTPReceiver();
+			receiver.setProperties(props);
+			receiver.setAuthenticatorBuilder(mailAuthenticator);
+			receiver.setMessageReader(mailMessageReader);
+			receiver.setServiceExtractor(mailServiceExtractor);
+			
+			return receiver.getMessages(filter);
 		} catch (Exception e) {
 			throw new ServiceCreationException(e.getMessage());
 		}

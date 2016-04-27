@@ -9,6 +9,8 @@ public interface MailContentBuilderIF {
 	
 	public static final int SMTP_SIMPLE_CONTENT_STRATEGY = 1;
 	
+	public static final int SMTP_CIPHER_CONTENT_STRATEGY = 2;
+	
 	public Message buildContent(Message message, ServiceIF service);
 
 	public int getType();

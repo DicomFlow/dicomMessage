@@ -11,7 +11,7 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 
 public abstract class AbstractMailSender implements MailSenderIF {
 
-		public void send(ServiceIF service) {
+		public String send(ServiceIF service) {
 
 			try {
 				Session session = Session.getInstance(getProperties(),
@@ -25,11 +25,13 @@ public abstract class AbstractMailSender implements MailSenderIF {
 				
 				Transport.send(message);
 
+				
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			}
+			return service.getMessageID();
 
 		}
 

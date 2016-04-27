@@ -49,6 +49,26 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 			return services.iterator();
 
 		}
+		
+		@Override
+		public List<Message> getMessages(FilterIF filter) {
+
+			List<Message> messages = new ArrayList<Message>();
+
+			try {
+
+				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
+
+				messages = getMessageReader().getMessages(session, filter);
+
+
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			return messages;
+
+		}
 
 		
 
