@@ -85,7 +85,7 @@ public class SMTPFilter implements FilterIF {
 			}
 			
 		}
-		
+		System.out.println("Term : " + term);
 		return term;
 	}
 

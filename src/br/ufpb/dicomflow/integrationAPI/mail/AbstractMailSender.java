@@ -1,4 +1,5 @@
 package br.ufpb.dicomflow.integrationAPI.mail;
+import java.io.File;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,14 +15,7 @@ public abstract class AbstractMailSender implements MailSenderIF {
 		public String send(ServiceIF service) {
 
 			try {
-				Session session = Session.getInstance(getProperties(),
-						getAuthenticatorBuilder().getAuthenticator());
-				session.setDebug(true);
-				
-				Message message = new MimeMessage(session);
-
-				message = getHeadBuilder().buildHead(message, service, getContentBuilder());
-				message = getContentBuilder().buildContent(message, service);
+				Message message = buildMessage(service, null);
 				
 				Transport.send(message);
 
@@ -33,6 +27,42 @@ public abstract class AbstractMailSender implements MailSenderIF {
 			}
 			return service.getMessageID();
 
+		}
+
+		
+		
+		public String send(ServiceIF service, File attachement) {
+
+			try {
+				Message message = buildMessage(service, attachement);
+				
+				Transport.send(message);
+
+				
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+			return service.getMessageID();
+
+		}
+		
+		private Message buildMessage(ServiceIF service, File attachment) {
+			Session session = Session.getInstance(getProperties(),
+					getAuthenticatorBuilder().getAuthenticator());
+			session.setDebug(true);
+			
+			Message message = new MimeMessage(session);
+
+			message = getHeadBuilder().buildHead(message, service, getContentBuilder());
+			
+			if(attachment != null && attachment.exists()){
+				message = getContentBuilder().buildContent(message, service, attachment);
+			}else{
+				message = getContentBuilder().buildContent(message, service);
+			}
+			return message;
 		}
 
 		@Override

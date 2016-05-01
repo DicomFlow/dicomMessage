@@ -24,6 +24,16 @@ public interface ServiceIF {
 	 * DispositionNotification Service Identifier 
 	 */
 	public static final int DISPOSITION_NOTIFICATION = 5;
+	
+	/**
+	 * CertificateRequest Service Identifier
+	 */
+	public static final int CERTIFICATE_REQUEST = 6;
+	
+	/**
+	 * CertificateResult Service Identifier
+	 */
+	public static final int CERTIFICATE_RESULT = 7;
 
 	public int getType();
 	
