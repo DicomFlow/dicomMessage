@@ -30,9 +30,14 @@ public class TagTerm extends SearchTerm {
 	@Override
 	public boolean match(Message message) {
 		if(tag != null && value !=  null){
+			System.out.println("TAG : " + tag);
+			System.out.println("VALUE : " + value);
 			MailHeadBuilderIF headBuilder = MailHeadBuilderFactory.createHeadStrategy(MailHeadBuilderIF.SMTP_HEAD_STRATEGY);
 			String tagValue = headBuilder.getHeaderValue(message,tag);
-			return tagValue.equals(value);
+			if(tagValue != null){
+				System.out.println("MATCH : " + tagValue.equals(value));
+				return tagValue.equals(value);
+			}
 		}
 		return false;
 	}

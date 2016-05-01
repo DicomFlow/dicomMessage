@@ -1,9 +1,11 @@
 package br.ufpb.dicomflow.integrationAPI.mail;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -47,6 +49,52 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 			}
 
 			return services.iterator();
+
+		}
+		
+		@Override
+		public Iterator<byte[]> receiveAttachs(FilterIF filter) {
+
+			List<byte[]> attachs = new ArrayList<byte[]>();
+
+			try {
+
+				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
+
+				List<Message> messages = getMessageReader().getMessages(session, filter);
+				
+				attachs = getServiceExtractor().getAttachs(messages);
+
+				
+
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			return attachs.iterator();
+
+		}
+		
+		@Override
+		public Iterator<Map<ServiceIF, byte[]>> receiveServiceAndAttachs(FilterIF filter) {
+
+			List<Map<ServiceIF, byte[]>> attachs = new ArrayList<Map<ServiceIF, byte[]>>();
+
+			try {
+
+				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
+
+				List<Message> messages = getMessageReader().getMessages(session, filter);
+				
+				attachs = getServiceExtractor().getServicesAndAttachs(messages);
+
+				
+
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+
+			return attachs.iterator();
 
 		}
 		

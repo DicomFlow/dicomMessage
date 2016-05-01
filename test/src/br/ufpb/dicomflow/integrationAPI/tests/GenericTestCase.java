@@ -12,6 +12,8 @@ import org.junit.BeforeClass;
 public class GenericTestCase extends TestCase {
 	
 	public static String outputDir = "temp/";
+	public static String certDir = "C:/Users/Danilo/";
+	public static String messageID = "";
 	
 	@BeforeClass
 	protected void setUp() throws IOException {		

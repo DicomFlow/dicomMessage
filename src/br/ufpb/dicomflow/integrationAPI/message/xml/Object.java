@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="object")
 public class Object {
+	
+	public static final String TYPE_STUDY = "STUDY";
+	public static final String TYPE_SERIE = "SERIE";
 
 	private String type;
 	private String id;
