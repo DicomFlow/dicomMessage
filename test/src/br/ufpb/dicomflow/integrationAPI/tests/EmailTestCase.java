@@ -14,6 +14,7 @@ import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPAuthenticator;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPContentBuilder;
+import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPFilter;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPHeadBuilder;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPMessageReader;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPReceiver;
@@ -53,7 +54,7 @@ public class EmailTestCase extends GenericTestCase {
 		receiver.setMessageReader(smtpMesssaStrategy);
 		receiver.setServiceExtractor(serviceExtractor);
 		
-		Iterator<ServiceIF> iterator = receiver.receive(null);
+		Iterator<ServiceIF> iterator = receiver.receive(new SMTPFilter());
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
@@ -290,7 +291,7 @@ public class EmailTestCase extends GenericTestCase {
 		receiver.setMessageReader(smtpMesssaStrategy);
 		receiver.setServiceExtractor(serviceExtractor2);
 		
-		Iterator<ServiceIF> iterator = receiver.receive(null);
+		Iterator<ServiceIF> iterator = receiver.receive(new SMTPFilter());
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
