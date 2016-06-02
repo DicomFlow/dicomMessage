@@ -99,7 +99,7 @@ public class IntegrationAPIProperties {
 		Properties receiveProperties = new Properties();
 		receiveProperties.put(DOMAIN, getProperty(DOMAIN));
 		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_PORT, getProperty(MAIL_IMAP_SOCKET_FACTORY_PORT));
-		receiveProperties.put(MAIL_IMAP_PORT, getProperty(MAIL_SMTP_PORT));
+		receiveProperties.put(MAIL_IMAP_PORT, getProperty(MAIL_IMAP_PORT));
 		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_CLASS, getProperty(MAIL_IMAP_SOCKET_FACTORY_CLASS));
 		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_FALLBACK, getProperty(MAIL_IMAP_SOCKET_FACTORY_FALLBACK));
 		receiveProperties.put(MAIL_STORE_PROTOCOL, getProperty(MAIL_STORE_PROTOCOL));
