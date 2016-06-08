@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class StorageResult extends Service {
 	
 	public static final String STORAGE_RESULT_NAME = "Storage";
-	public static final String STORAGE_RESULT_ACTION = "Update";
+	public static final String STORAGE_RESULT_ACTION = "Result";
 	public static final String STORAGE_RESULT_VERSION = "1.0";
 	
 	private List<Result> result;
