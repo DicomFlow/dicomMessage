@@ -70,12 +70,7 @@ public abstract class AbstractMailSender implements MailSenderIF {
 		private Message buildMessage(ServiceIF service, File attachment) {
 			Session session = Session.getInstance(getProperties(),
 					getAuthenticatorBuilder().getAuthenticator());
-			if(getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG) != null || !getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG).equals("")){
-				session.setDebug(new Boolean(getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG)));
-			}else{
-				session.setDebug(false);
-			}
-			 
+			
 			
 			Message message = new MimeMessage(session);
 
