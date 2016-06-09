@@ -25,6 +25,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 
+import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 
 public abstract class AbstractMailSender implements MailSenderIF {
@@ -68,7 +70,12 @@ public abstract class AbstractMailSender implements MailSenderIF {
 		private Message buildMessage(ServiceIF service, File attachment) {
 			Session session = Session.getInstance(getProperties(),
 					getAuthenticatorBuilder().getAuthenticator());
-//			session.setDebug(false);
+			if(getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG) != null || !getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG).equals("")){
+				session.setDebug(new Boolean(getProperties().getProperty(IntegrationAPIProperties.MAIL_DEBUG)));
+			}else{
+				session.setDebug(false);
+			}
+			 
 			
 			Message message = new MimeMessage(session);
 
