@@ -61,7 +61,7 @@ public class SMTPFilter implements FilterIF {
 		if(this.getInitialDate() != null){
 			Calendar start = Calendar.getInstance();
 			start.setTime(this.getInitialDate());
-			System.out.println("Data inicial: " + start.toString());
+			//System.out.println("Data inicial: " + start.toString());
 			
 			ReceivedDateTerm startDateTerm = new ReceivedDateTerm(ComparisonTerm.GE, this.getInitialDate());
 			if(term != null){
@@ -74,7 +74,7 @@ public class SMTPFilter implements FilterIF {
 		if(this.getFinalDate() != null){
 			Calendar end = Calendar.getInstance();
 			end.setTime(this.getFinalDate());
-			System.out.println("Data final: " + end.toString());
+			//System.out.println("Data final: " + end.toString());
 			ReceivedDateTerm endDateTerm = new ReceivedDateTerm(ComparisonTerm.LT, this.getFinalDate());
 			if(term != null){
 				term = new AndTerm(term, endDateTerm);
@@ -102,7 +102,7 @@ public class SMTPFilter implements FilterIF {
 			}
 			
 		}
-		System.out.println("Term : " + term);
+		//System.out.println("Term : " + term);
 		return term;
 	}
 

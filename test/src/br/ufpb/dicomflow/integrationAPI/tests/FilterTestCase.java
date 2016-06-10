@@ -90,7 +90,7 @@ public class FilterTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 	}
 	
@@ -129,7 +129,7 @@ public class FilterTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 	}
 	
@@ -169,7 +169,7 @@ public class FilterTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 	}
 	
@@ -199,7 +199,7 @@ public class FilterTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 	}
 	

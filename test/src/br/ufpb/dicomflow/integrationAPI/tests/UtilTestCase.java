@@ -29,7 +29,9 @@ public class UtilTestCase extends GenericTestCase {
 		IntegrationAPIProperties properties = IntegrationAPIProperties.getInstance();
 		properties.load(IntegrationAPIProperties.CONFIG_FILE_PATH);
 		try {
-			System.out.println(properties.getProperty(IntegrationAPIProperties.MAIL_SMTP_HOST));
+			//System.out.println(properties.getProperty(IntegrationAPIProperties.MAIL_SMTP_HOST));
+			properties.getProperty(IntegrationAPIProperties.MAIL_SMTP_HOST);
+			
 		} catch (PropertyNotFoundException e) {
 			e.printStackTrace();
 		}

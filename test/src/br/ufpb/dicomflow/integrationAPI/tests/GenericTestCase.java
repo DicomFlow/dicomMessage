@@ -37,12 +37,12 @@ public class GenericTestCase extends TestCase {
 		File dir = new File(outputDir);
 		dir.mkdir();
 		FileUtils.cleanDirectory(dir);
-		System.out.println("/************ Start ************/");
+		//System.out.println("/************ Start ************/");
 	}
 	
 	@AfterClass
 	protected void tearDown() {
-		System.out.println("/************* End *************/");
+		//System.out.println("/************* End *************/");
 		System.gc();
 	}		
 

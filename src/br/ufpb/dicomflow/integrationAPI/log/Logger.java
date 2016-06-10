@@ -167,7 +167,7 @@ public class Logger {
     }
     
     public static void s(String detail){
-    	System.out.println(detail);
+    	//System.out.println(detail);
     }
     
     public static List<LogHandler> getHandlers() {

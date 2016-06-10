@@ -75,7 +75,7 @@ public class EmailTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 	}
 	
@@ -120,7 +120,7 @@ public class EmailTestCase extends GenericTestCase {
 //			jaxbMarshaller.marshal(storageDelete, System.out);
 //			jaxbMarshaller.marshal(storageDelete, str);
 //			
-//			System.out.println(str.toString());
+//			//System.out.println(str.toString());
 //			
 //			Properties props = new Properties();
 //            /** Parâmetros de conexão com servidor Gmail */
@@ -170,7 +170,7 @@ public class EmailTestCase extends GenericTestCase {
 //            /**Método para enviar a mensagem criada*/
 //            Transport.send(message);
 //
-//            System.out.println("Feito!!!");
+//            //System.out.println("Feito!!!");
 //
 //
 //		} catch (JAXBException e) {
@@ -312,7 +312,7 @@ public class EmailTestCase extends GenericTestCase {
 		
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
-			System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 		}
 		
 		

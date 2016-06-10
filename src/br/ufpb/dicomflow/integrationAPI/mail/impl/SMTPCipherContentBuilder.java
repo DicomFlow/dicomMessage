@@ -135,10 +135,10 @@ public class SMTPCipherContentBuilder implements MailContentBuilderIF {
 				Part part = content.getBodyPart(i);
 				// pegando um tipo do conteúdo
 				String contentType = part.getContentType();
-				System.out.println("PART : " + contentType.toLowerCase());
+				//System.out.println("PART : " + contentType.toLowerCase());
 				// Tela do conteúdo
 				if (contentType.toLowerCase().startsWith("application/octet-stream")) {
-					System.out.println("ATTACH : " + part.getFileName());
+					//System.out.println("ATTACH : " + part.getFileName());
 
 					InputStream is = part.getInputStream();
 					List<Byte> bytes = new ArrayList<Byte>();
@@ -151,7 +151,7 @@ public class SMTPCipherContentBuilder implements MailContentBuilderIF {
 						result[j] = bytes.get(j);
 					}
 
-					System.out.println("ATTACH LENTGH : " + result.length);
+					//System.out.println("ATTACH LENTGH : " + result.length);
 					return result;
 					
 				}										
@@ -181,7 +181,7 @@ public class SMTPCipherContentBuilder implements MailContentBuilderIF {
 					
 					StringBuffer xmlStr = new StringBuffer();
 					xmlStr.append(part.getContent().toString());
-					System.out.println("O XML DO SERVICO \n" + xmlStr);
+					//System.out.println("O XML DO SERVICO \n" + xmlStr);
 
 					ServiceIF service;
 					try {

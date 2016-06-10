@@ -96,7 +96,7 @@ public class CertificateTestCase extends GenericTestCase {
 
 		
 		try {
-			System.out.println("MESSAGE-ID : " + messageID);
+			//System.out.println("MESSAGE-ID : " + messageID);
 			FilterIF filter = new SMTPFilter();
 			filter.setIdMessage(messageID+"@dicomflow.com");
 			
@@ -104,14 +104,14 @@ public class CertificateTestCase extends GenericTestCase {
 			
 			while (iterator.hasNext()) {
 				ServiceIF serviceIF = (ServiceIF) iterator.next();
-				System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+				//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 			}
 			
 			Iterator<byte[]> iterator2 = ServiceProcessor.receiveAttachs(null, null, null, null, filter);
 			
 			while (iterator2.hasNext()) {
 				byte[] bs = (byte[]) iterator2.next();
-				System.out.println("BYTE ARRAY LEGTH : " + bs.length);
+				//System.out.println("BYTE ARRAY LEGTH : " + bs.length);
 				File cert = new File(certDir+File.separator+"attach.crt");
 				try {
 					if(!cert.exists()){

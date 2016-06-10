@@ -89,7 +89,7 @@ public class CreateMessagesTestCase extends GenericTestCase {
 
 			//jaxbMarshaller.marshal(storageResult, file);
 			jaxbMarshaller.marshal(storageResult, os);
-			System.out.println(os.toString());
+			//System.out.println(os.toString());
 			
 			assertTrue( os!= null && os.size() > 0);
 			//assertTrue(file.exists() && file.length() > 0);
