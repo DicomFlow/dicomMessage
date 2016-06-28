@@ -11,5 +11,11 @@
 	<classpathentry kind="lib" path="lib/jaxb-xjc.jar"/>
 	<classpathentry kind="lib" path="lib/javax.mail.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/javamail-crypto.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix-openpgp-provider.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix-jce-provider.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix-message-api.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix-pki-api.jar"/>
+	<classpathentry kind="lib" path="lib/javamail-crypto-cryptix-openpgp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
