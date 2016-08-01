@@ -25,20 +25,25 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
-import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
+import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
+import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPAuthenticator;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPContentBuilder;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPFilter;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPHeadBuilder;
+import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPMessageReader;
+import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPReceiver;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPSender;
+import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPServiceExtractor;
 import br.ufpb.dicomflow.integrationAPI.main.ServiceFactory;
-import br.ufpb.dicomflow.integrationAPI.main.ServiceProcessor;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateRequest;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 
@@ -76,49 +81,59 @@ public class CertificateTestCase extends GenericTestCase {
         sender.setContentBuilder(smtpSimpleContentStrategy);
         
         messageID = sender.send(certRequest, attachment);
+        System.out.println("MESSAGE ID ======> " + messageID);
+        
+        
+        System.out.println("MESSAGE-ID : " + messageID);
+		FilterIF filter = new SMTPFilter();
+		filter.setIdMessage(messageID+"@dicomflow.com");
+		
+		Properties receiveProps = new Properties();
+		receiveProps.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		receiveProps.put("mail.imap.socketFactory.fallback", "false");
+		receiveProps.put("mail.store.protocol", "imaps");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator("protocolointegracao@gmail.com", "pr0t0c0l0ap1");
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		MailServiceExtractorIF serviceExtractor2 = new SMTPServiceExtractor();
+		
+		SMTPReceiver receiver = new SMTPReceiver();
+		receiver.setProperties(receiveProps);
+		receiver.setAuthenticatorBuilder(smtpAuthenticatorStrategy2);
+		receiver.setMessageReader(smtpMesssaStrategy);
+		receiver.setServiceExtractor(serviceExtractor2);
+		
+		
+		List<ServiceIF> services = receiver.receive(filter);//ServiceProcessor.receiveServices(null, null, null, null, filter);
+		Iterator<ServiceIF> iterator = services.iterator();
+		while (iterator.hasNext()) {
+			ServiceIF serviceIF = (ServiceIF) iterator.next();
+			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
+		}
+		
+		List<byte[]> attachs = receiver.receiveAttachs(filter);//ServiceProcessor.receiveAttachs(null, null, null, null, filter);
+		Iterator<byte[]> iterator2 = attachs.iterator();
+		while (iterator2.hasNext()) {
+			byte[] bs = (byte[]) iterator2.next();
+			System.out.println("BYTE ARRAY LEGTH : " + bs.length);
+			File cert = new File(certDir+File.separator+"attach.crt");
+			try {
+				if(!cert.exists()){
+					cert.createNewFile();
+				}
+				FileOutputStream fos = new FileOutputStream(cert);
+				fos.write(bs);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
         
 
 	}
 	
-	@Test
-	public static void testReceiveCertificateRequest() {                
-
-		
-		try {
-			//System.out.println("MESSAGE-ID : " + messageID);
-			FilterIF filter = new SMTPFilter();
-			filter.setIdMessage(messageID+"@dicomflow.com");
-			
-			List<ServiceIF> services = ServiceProcessor.receiveServices(null, null, null, null, filter);
-			Iterator<ServiceIF> iterator = services.iterator();
-			while (iterator.hasNext()) {
-				ServiceIF serviceIF = (ServiceIF) iterator.next();
-				//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
-			}
-			
-			List<byte[]> attachs = ServiceProcessor.receiveAttachs(null, null, null, null, filter);
-			Iterator<byte[]> iterator2 = attachs.iterator();
-			while (iterator2.hasNext()) {
-				byte[] bs = (byte[]) iterator2.next();
-				//System.out.println("BYTE ARRAY LEGTH : " + bs.length);
-				File cert = new File(certDir+File.separator+"attach.crt");
-				try {
-					if(!cert.exists()){
-						cert.createNewFile();
-					}
-					FileOutputStream fos = new FileOutputStream(cert);
-					fos.write(bs);
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				
-			}
-		} catch (ServiceCreationException e) {
-			fail();
-		}
-	}
 	
 }
