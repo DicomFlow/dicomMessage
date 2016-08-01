@@ -26,7 +26,11 @@ public interface MailMessageReaderIF {
 	
 	public static final int SMTP_MESSAGE_STRATEGY = 1;
 
-	public List<Message> getMessages(Session session, FilterIF filter);
+	public void openFolder(Session session);
+	
+	public List<Message> getMessages(FilterIF filter);
+	
+	public void closeFolder();
 	
 	//TODO getMesssages em lotes para limitações de ambiente
 	

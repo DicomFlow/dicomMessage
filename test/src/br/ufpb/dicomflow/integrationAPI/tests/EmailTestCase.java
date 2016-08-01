@@ -71,8 +71,8 @@ public class EmailTestCase extends GenericTestCase {
 		receiver.setMessageReader(smtpMesssaStrategy);
 		receiver.setServiceExtractor(serviceExtractor);
 		
-		Iterator<ServiceIF> iterator = receiver.receive(new SMTPFilter());
-		
+		List<ServiceIF> services = receiver.receive(new SMTPFilter());
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
@@ -308,8 +308,8 @@ public class EmailTestCase extends GenericTestCase {
 		receiver.setMessageReader(smtpMesssaStrategy);
 		receiver.setServiceExtractor(serviceExtractor2);
 		
-		Iterator<ServiceIF> iterator = receiver.receive(new SMTPFilter());
-		
+		List<ServiceIF> services = receiver.receive(new SMTPFilter());
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());

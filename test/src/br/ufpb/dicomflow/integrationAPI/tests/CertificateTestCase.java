@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -33,25 +32,15 @@ import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
-import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
-import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPAuthenticator;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPContentBuilder;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPFilter;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPHeadBuilder;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPMessageReader;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPReceiver;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPSender;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPServiceExtractor;
-import br.ufpb.dicomflow.integrationAPI.main.DefaultIdMessageGeneratorStrategy;
 import br.ufpb.dicomflow.integrationAPI.main.ServiceFactory;
 import br.ufpb.dicomflow.integrationAPI.main.ServiceProcessor;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateRequest;
-import br.ufpb.dicomflow.integrationAPI.message.xml.Credentials;
-import br.ufpb.dicomflow.integrationAPI.message.xml.Object;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
-import br.ufpb.dicomflow.integrationAPI.message.xml.StorageDelete;
-import br.ufpb.dicomflow.integrationAPI.message.xml.URL;
 
 public class CertificateTestCase extends GenericTestCase {
 	
@@ -100,15 +89,15 @@ public class CertificateTestCase extends GenericTestCase {
 			FilterIF filter = new SMTPFilter();
 			filter.setIdMessage(messageID+"@dicomflow.com");
 			
-			Iterator<ServiceIF> iterator = ServiceProcessor.receiveMessage(null, null, null, null, filter);
-			
+			List<ServiceIF> services = ServiceProcessor.receiveServices(null, null, null, null, filter);
+			Iterator<ServiceIF> iterator = services.iterator();
 			while (iterator.hasNext()) {
 				ServiceIF serviceIF = (ServiceIF) iterator.next();
 				//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
 			}
 			
-			Iterator<byte[]> iterator2 = ServiceProcessor.receiveAttachs(null, null, null, null, filter);
-			
+			List<byte[]> attachs = ServiceProcessor.receiveAttachs(null, null, null, null, filter);
+			Iterator<byte[]> iterator2 = attachs.iterator();
 			while (iterator2.hasNext()) {
 				byte[] bs = (byte[]) iterator2.next();
 				//System.out.println("BYTE ARRAY LEGTH : " + bs.length);

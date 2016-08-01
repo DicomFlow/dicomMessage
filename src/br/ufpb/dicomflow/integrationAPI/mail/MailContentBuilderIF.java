@@ -18,7 +18,6 @@
 package br.ufpb.dicomflow.integrationAPI.mail;
 
 import java.io.File;
-import java.util.Map;
 
 import javax.mail.Message;
 import javax.mail.Multipart;
@@ -40,7 +39,5 @@ public interface MailContentBuilderIF {
 	public ServiceIF getService(Multipart content, int type);
 
 	public byte[] getAttach(Multipart content);
-	
-	public Map<ServiceIF, byte[]> getServiceAndAttach(Multipart content, int type);
 	
 }

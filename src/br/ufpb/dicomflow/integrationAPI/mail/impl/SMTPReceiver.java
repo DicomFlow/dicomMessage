@@ -21,7 +21,6 @@ import java.util.Properties;
 
 import br.ufpb.dicomflow.integrationAPI.mail.AbstractMailReceiver;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
-import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
 

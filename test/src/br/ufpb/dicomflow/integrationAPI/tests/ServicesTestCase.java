@@ -72,7 +72,7 @@ public class ServicesTestCase extends GenericTestCase {
 		try {
 			FilterIF filter = new SMTPFilter();
 			filter.setServiceType(new Integer(ServiceIF.STORAGE_DELETE));
-			ServiceProcessor.receiveMessage(null, null, null, null, filter);
+			ServiceProcessor.receiveServices(null, null, null, null, filter);
 		} catch (ServiceCreationException e) {
 			fail();
 		}

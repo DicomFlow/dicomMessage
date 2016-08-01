@@ -17,6 +17,8 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail;
 
+import java.util.Map;
+
 import javax.mail.Message;
 
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
@@ -42,5 +44,7 @@ public interface MailHeadBuilderIF {
 	public String getDomain();
 
 	public void setDomain(String domain);
+	
+	public Map<String, Object> getMailXTags(Message message);
 
 }

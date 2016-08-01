@@ -27,9 +27,6 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
-import javax.mail.search.AndTerm;
-import javax.mail.search.ComparisonTerm;
-import javax.mail.search.ReceivedDateTerm;
 import javax.mail.search.SearchTerm;
 
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
@@ -39,6 +36,8 @@ public class SMTPMessageReader implements MailMessageReaderIF {
 	
 	private String hostProvider;
 	private String folderName;
+	private Folder folder;
+	private Store store;
 
 	 
 	
@@ -48,24 +47,33 @@ public class SMTPMessageReader implements MailMessageReaderIF {
 		this.folderName = folderName;
 	}
 
+	public void openFolder(Session session){
+		try {
+			this.store = session.getStore(/*this.provider*/);
+			this.store.connect(this.hostProvider, null, null);
+
+		    this.folder = store.getFolder(this.folderName);
+		} catch (NoSuchProviderException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Override
-	public List<Message> getMessages(Session session, FilterIF filter) {
+	public List<Message> getMessages(FilterIF filter) {
 		
 		List<Message> messages = new ArrayList<Message>();
 		
 		try {
 			
-			
-			Store store = session.getStore(/*this.provider*/);
-			store.connect(this.hostProvider, null, null);
-
-		    Folder folder = store.getFolder(this.folderName);
 		    
-		    if (folder == null) {
+		    if (this.folder == null) {
 		    	return messages;
 		    }
 		    
-		    folder.open(Folder.READ_WRITE);
+		    this.folder.open(Folder.READ_WRITE);
 		    
 		    SearchTerm term = filter.getTerm();
 		    if(term != null){
@@ -74,9 +82,7 @@ public class SMTPMessageReader implements MailMessageReaderIF {
 		    	messages.addAll(Arrays.asList(folder.getMessages()));
 		    }
 		    
-		    //TODO resolver o fechamento do folder e o store
-		    //folder.close(false);
-		    //store.close();
+		    
 	    
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
@@ -86,6 +92,18 @@ public class SMTPMessageReader implements MailMessageReaderIF {
 		return messages;
 	}
 
+	
+	public void closeFolder(){
+		if(this.folder != null && this.store != null){
+			try {
+				this.folder.close(false);
+				this.store.close();
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
 	
 
 //	public String getProvider() {
