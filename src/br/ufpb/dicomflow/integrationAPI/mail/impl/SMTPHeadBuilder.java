@@ -18,6 +18,8 @@
 package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.mail.Address;
 import javax.mail.Header;
@@ -119,6 +121,18 @@ public class SMTPHeadBuilder implements MailHeadBuilderIF {
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+
+	@Override
+	public Map<String, Object> getMailXTags(Message message) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(MailXTags.CONTENT_BUILDER_X_TAG, getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
+		map.put(MailXTags.DISPOSITION_NOTIFICARION_KEY_ID_X_TAG, getHeaderValue(message, MailXTags.DISPOSITION_NOTIFICARION_KEY_ID_X_TAG));
+		map.put(MailXTags.DISPOSITION_NOTIFICATION_TO_X_TAG, getHeaderValue(message, MailXTags.DISPOSITION_NOTIFICATION_TO_X_TAG));
+		map.put(MailXTags.HEAD_BUILDER_X_TAG, getHeaderValue(message, MailXTags.HEAD_BUILDER_X_TAG));
+		map.put(MailXTags.MESSAGE_ID_X_TAG, getHeaderValue(message, MailXTags.MESSAGE_ID_X_TAG));
+		map.put(MailXTags.SERVICE_TYPE_X_TAG, getHeaderValue(message, MailXTags.SERVICE_TYPE_X_TAG));
 		return null;
 	}
 	

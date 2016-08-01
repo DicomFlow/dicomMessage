@@ -18,7 +18,6 @@
 package br.ufpb.dicomflow.integrationAPI.mail;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.mail.Message;
 
@@ -35,9 +34,9 @@ public interface MailServiceExtractorIF {
 	
 	public List<byte[]> getAttachs(List<Message> messages);
 	
-	public Map<ServiceIF,byte[]> getServiceAndAttach(Message message);
+	public MessageIF getServiceAndAttach(Message message);
 	
-	public List<Map<ServiceIF,byte[]>> getServicesAndAttachs(List<Message> messages);
+	public List<MessageIF> getServicesAndAttachs(List<Message> messages);
 	
 	
 

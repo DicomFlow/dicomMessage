@@ -86,8 +86,8 @@ public class FilterTestCase extends GenericTestCase {
 		SMTPFilter filter = new SMTPFilter();
 		filter.setServiceType(new Integer(ServiceIF.STORAGE_DELETE));
 		
-		Iterator<ServiceIF> iterator = receiver.receive(filter);
-		
+		List<ServiceIF> services = receiver.receive(filter);
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
@@ -125,8 +125,8 @@ public class FilterTestCase extends GenericTestCase {
 		
 		
 		
-		Iterator<ServiceIF> iterator = receiver.receive(filter);
-		
+		List<ServiceIF> services = receiver.receive(filter);
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
@@ -165,8 +165,8 @@ public class FilterTestCase extends GenericTestCase {
 		filter.setServiceType(new Integer(ServiceIF.STORAGE_DELETE));
 		
 		
-		Iterator<ServiceIF> iterator = receiver.receive(filter);
-		
+		List<ServiceIF> services = receiver.receive(filter);
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());
@@ -195,8 +195,8 @@ public class FilterTestCase extends GenericTestCase {
 		filter.setIdMessage("8a12a580-2e55-45ef-b9a4-f99c280e8319@dominio.com");
 		
 		
-		Iterator<ServiceIF> iterator = receiver.receive(filter);
-		
+		List<ServiceIF> services = receiver.receive(filter);
+		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();
 			//System.out.println("MessageID:" +serviceIF.getMessageID() + "Name: " + serviceIF.getName() + "Action: " +serviceIF.getAction());

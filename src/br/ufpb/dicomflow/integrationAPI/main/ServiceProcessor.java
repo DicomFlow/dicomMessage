@@ -18,12 +18,8 @@
 package br.ufpb.dicomflow.integrationAPI.main;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-
-import javax.mail.Message;
 
 import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
@@ -33,6 +29,7 @@ import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
+import br.ufpb.dicomflow.integrationAPI.mail.MessageIF;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPAuthenticator;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPContentBuilder;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPHeadBuilder;
@@ -122,7 +119,7 @@ public class ServiceProcessor {
 		
 	}
 	
-	public static Iterator<ServiceIF> receiveMessage(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
+	public static List<ServiceIF> receiveServices(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
 		
 		try{
 			if(props == null){
@@ -156,7 +153,7 @@ public class ServiceProcessor {
 		
 	}
 	
-	public static List<Message> receiveMessages(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
+	public static List<MessageIF> receiveMessages(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
 		
 		try{
 			if(props == null){
@@ -182,7 +179,7 @@ public class ServiceProcessor {
 			receiver.setMessageReader(mailMessageReader);
 			receiver.setServiceExtractor(mailServiceExtractor);
 			
-			return receiver.getMessages(filter);
+			return receiver.receiveMessages(filter);
 		} catch (Exception e) {
 			throw new ServiceCreationException(e.getMessage());
 		}
@@ -190,7 +187,7 @@ public class ServiceProcessor {
 		
 	}
 	
-	public static Iterator<byte[]> receiveAttachs(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
+	public static List<byte[]> receiveAttachs(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
 		
 		try{
 			if(props == null){
@@ -217,40 +214,6 @@ public class ServiceProcessor {
 			receiver.setServiceExtractor(mailServiceExtractor);
 			
 			return receiver.receiveAttachs(filter);
-		} catch (Exception e) {
-			throw new ServiceCreationException(e.getMessage());
-		}
-		
-		
-	}
-	
-	public static Iterator<Map<ServiceIF, byte[]>> receiveServicesAndAttachs(Properties props, MailAuthenticatorIF mailAuthenticator, MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader, FilterIF filter) throws ServiceCreationException{
-		
-		try{
-			if(props == null){
-				IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-				props = IntegrationAPIProperties.getInstance().getReceiveProperties();
-			}
-			
-			if (mailAuthenticator == null) {
-				mailAuthenticator =  new SMTPAuthenticator(props.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), props.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
-			}
-			
-			if(mailServiceExtractor == null){
-				mailServiceExtractor = new SMTPServiceExtractor();
-			}
-			
-			if(mailMessageReader == null){
-				mailMessageReader = new SMTPMessageReader(props.getProperty(IntegrationAPIProperties.PROVIDER_HOST), props.getProperty(IntegrationAPIProperties.PROVIDER_FOLDER));
-			}
-			
-			SMTPReceiver receiver = new SMTPReceiver();
-			receiver.setProperties(props);
-			receiver.setAuthenticatorBuilder(mailAuthenticator);
-			receiver.setMessageReader(mailMessageReader);
-			receiver.setServiceExtractor(mailServiceExtractor);
-			
-			return receiver.receiveServiceAndAttachs(filter);
 		} catch (Exception e) {
 			throw new ServiceCreationException(e.getMessage());
 		}

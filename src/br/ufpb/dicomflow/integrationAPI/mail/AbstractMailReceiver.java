@@ -17,21 +17,13 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.Session;
 
-import br.ufpb.dicomflow.integrationAPI.mail.impl.MailContentBuilderFactory;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.MailXTags;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 
 public abstract class AbstractMailReceiver implements MailReceiverIF {
@@ -49,92 +41,85 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 		public abstract MailServiceExtractorIF getServiceExtractor();
 
 		@Override
-		public Iterator<ServiceIF> receive(FilterIF filter) {
+		public List<ServiceIF> receive(FilterIF filter) {
 
 			List<ServiceIF> services = new ArrayList<ServiceIF>();
 
 			try {
 
 				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
+				
+				getMessageReader().openFolder(session);
 
-				List<Message> messages = getMessageReader().getMessages(session, filter);
+				List<Message> messages = getMessageReader().getMessages( filter);
 
 				services = getServiceExtractor().getServices(messages);
+				
+				getMessageReader().closeFolder();
 
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			}
 
-			return services.iterator();
+			return services;
 
 		}
 		
 		@Override
-		public Iterator<byte[]> receiveAttachs(FilterIF filter) {
+		public List<byte[]> receiveAttachs(FilterIF filter) {
 
 			List<byte[]> attachs = new ArrayList<byte[]>();
 
 			try {
 
 				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
+				
+				getMessageReader().openFolder(session);
 
-				List<Message> messages = getMessageReader().getMessages(session, filter);
+				List<Message> messages = getMessageReader().getMessages(filter);
 				
 				attachs = getServiceExtractor().getAttachs(messages);
 
-				
+				getMessageReader().closeFolder();
 
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			}
 
-			return attachs.iterator();
+			return attachs;
 
 		}
 		
+		
 		@Override
-		public Iterator<Map<ServiceIF, byte[]>> receiveServiceAndAttachs(FilterIF filter) {
+		public List<MessageIF> receiveMessages(FilterIF filter) {
 
-			List<Map<ServiceIF, byte[]>> attachs = new ArrayList<Map<ServiceIF, byte[]>>();
+			List<MessageIF> messagesIF = new ArrayList<MessageIF>();
 
 			try {
 
 				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
-
-				List<Message> messages = getMessageReader().getMessages(session, filter);
 				
-				attachs = getServiceExtractor().getServicesAndAttachs(messages);
-
+				getMessageReader().openFolder(session);
 				
+				List<Message> messages = getMessageReader().getMessages(filter);
+
+				messagesIF = getServiceExtractor().getServicesAndAttachs(messages);
+				
+				getMessageReader().closeFolder();
 
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			}
 
-			return attachs.iterator();
+			return messagesIF;
 
 		}
-		
+
 		@Override
-		public List<Message> getMessages(FilterIF filter) {
-
-			List<Message> messages = new ArrayList<Message>();
-
-			try {
-
-				Session session = Session.getInstance(getProperties(), getAuthenticatorBuilder().getAuthenticator());
-
-				messages = getMessageReader().getMessages(session, filter);
-
-
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
-
-			return messages;
-
+		public  void releaseMessages(){
+			getMessageReader().closeFolder();
 		}
-
 		
 
 }

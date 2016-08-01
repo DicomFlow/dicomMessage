@@ -17,12 +17,10 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -31,6 +29,7 @@ import javax.mail.Multipart;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailServiceExtractorIF;
+import br.ufpb.dicomflow.integrationAPI.mail.MessageIF;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 import br.ufpb.dicomflow.integrationAPI.message.xml.UnknownService;
 
@@ -118,19 +117,24 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 	}
 	
 	@Override
-	public Map<ServiceIF,byte[]> getServiceAndAttach(Message message) {
+	public MessageIF getServiceAndAttach(Message message) {
 		
 		try {
 		
+			
+			
 			MailHeadBuilderIF headBuilder = MailHeadBuilderFactory.createHeadStrategy(MailHeadBuilderIF.SMTP_HEAD_STRATEGY);
 			
 			int contentType = Integer.valueOf(headBuilder.getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
 			MailContentBuilderIF contentStrategy = MailContentBuilderFactory.createContentStrategy(contentType);
 			int serviceType = Integer.valueOf(headBuilder.getHeaderValue(message,MailXTags.SERVICE_TYPE_X_TAG));
-	
-			Map<ServiceIF,byte[]> serviceAndAttach = contentStrategy.getServiceAndAttach((Multipart) message.getContent(), serviceType);
 			
-			return serviceAndAttach;
+			MessageIF smtpMessage = new SMTPMessage();
+			smtpMessage.setMailXTags(headBuilder.getMailXTags(message));
+			smtpMessage.setService(contentStrategy.getService((Multipart) message.getContent(), serviceType));
+			smtpMessage.setAttach(contentStrategy.getAttach((Multipart) message.getContent()));
+			
+			return smtpMessage;
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -143,16 +147,16 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 	}
 	
 	@Override
-	public List<Map<ServiceIF,byte[]>> getServicesAndAttachs(List<Message> messages) {
+	public List<MessageIF> getServicesAndAttachs(List<Message> messages) {
 		
-		List<Map<ServiceIF,byte[]>> servicesAndattachs = new ArrayList<Map<ServiceIF,byte[]>>();
+		List<MessageIF> servicesAndattachs = new ArrayList<MessageIF>();
 		
 		Iterator<Message> iterator = messages.iterator();
 		while (iterator.hasNext()) {
 			
 			Message message = (Message) iterator.next();
-			Map<ServiceIF,byte[]> serviceAndAttach = getServiceAndAttach(message);
-			servicesAndattachs.add(serviceAndAttach);
+			MessageIF messageIF = getServiceAndAttach(message);
+			servicesAndattachs.add(messageIF);
 
 		}
 		return servicesAndattachs;

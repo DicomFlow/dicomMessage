@@ -17,18 +17,13 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -40,15 +35,12 @@ import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
-import javax.mail.util.ByteArrayDataSource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
-
-import com.sun.mail.iap.ByteArray;
 
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.main.ServiceFactory;
@@ -211,15 +203,6 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 		}
 		
 		return null;
-	}
-	
-	@Override
-	public Map<ServiceIF, byte[]> getServiceAndAttach(Multipart content, int type) {
-		Map<ServiceIF, byte[]> map = new HashMap<ServiceIF,byte[]>();
-		ServiceIF service = getService(content, type);
-		byte[] attach = getAttach(content);
-		map.put(service, attach);
-		return map;
 	}
 
 }

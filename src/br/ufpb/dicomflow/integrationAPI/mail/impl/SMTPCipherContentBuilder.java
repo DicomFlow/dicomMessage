@@ -23,9 +23,7 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -205,15 +203,6 @@ public class SMTPCipherContentBuilder implements MailContentBuilderIF {
 		}
 		
 		return null;
-	}
-	
-	@Override
-	public Map<ServiceIF, byte[]> getServiceAndAttach(Multipart content, int type) {
-		Map<ServiceIF, byte[]> map = new HashMap<ServiceIF,byte[]>();
-		ServiceIF service = getService(content, type);
-		byte[] attach = getAttach(content);
-		map.put(service, attach);
-		return map;
 	}
 
 }
