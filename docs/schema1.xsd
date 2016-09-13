@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="notification" type="notification"/>
+
+  <xs:element name="object" nillable="true" type="xs:anyType"/>
+
+  <xs:element name="result" type="result"/>
+
+  <xs:element name="service" nillable="true" type="xs:anyType"/>
+
+  <xs:complexType name="basicService">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="service">
+    <xs:sequence>
+      <xs:element name="messageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestamp" type="xs:string" minOccurs="0"/>
+      <xs:element name="timeout" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="action" type="xs:string"/>
+    <xs:attribute name="type" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="certificateRequest">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="domain" type="xs:string" minOccurs="0"/>
+          <xs:element name="mail" type="xs:string" minOccurs="0"/>
+          <xs:element name="port" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="certificateResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="credential" type="xs:string" minOccurs="0"/>
+          <xs:element name="domain" type="xs:string" minOccurs="0"/>
+          <xs:element name="mail" type="xs:string" minOccurs="0"/>
+          <xs:element name="port" type="xs:int" minOccurs="0"/>
+          <xs:element name="status" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="completed">
+    <xs:sequence>
+      <xs:element name="completedMessage" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="status" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="credentials">
+    <xs:sequence>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dispositionFields">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="dispositionNotification">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="notifications" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="notifications" type="notification" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="notification">
+    <xs:sequence>
+      <xs:element name="comment" type="xs:string" minOccurs="0"/>
+      <xs:element name="dispositionField" type="xs:string" minOccurs="0"/>
+      <xs:element name="errorCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalMessageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="response" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="errorCodes">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="object">
+    <xs:sequence>
+      <xs:element name="credential" type="credentials" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="result">
+    <xs:sequence>
+      <xs:element name="completed" type="completed" minOccurs="0"/>
+      <xs:element name="objects" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="objects" type="object" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="originalMessageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestamp" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="storageDelete">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="objects" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="object" type="object" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="storageResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="results" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="result" type="result" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="storageSave">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="url" type="url" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="url">
+    <xs:sequence>
+      <xs:element name="credentials" type="credentials" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="storageUpdate">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element ref="object" minOccurs="0"/>
+          <xs:element name="url" type="url" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="unknownService">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+
