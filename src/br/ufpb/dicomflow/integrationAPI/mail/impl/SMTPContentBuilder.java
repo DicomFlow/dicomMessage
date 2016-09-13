@@ -128,6 +128,9 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 	@Override
 	public byte[] getAttach(Multipart content) {
 		try {
+			if(content == null){
+				return new byte[]{};
+			}
 			for (int i = 0; i < content.getCount(); i++) {
 
 				Part part = content.getBodyPart(i);
@@ -168,6 +171,10 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 	@Override
 	public ServiceIF getService(Multipart content, int type) {
 		try {
+			
+			if(content == null){
+				return new UnknownService("Service content is null.");
+			}
 			for (int i = 0; i < content.getCount(); i++) {
 
 				Part part = content.getBodyPart(i);
@@ -189,6 +196,7 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 					
 						service = (ServiceIF) jaxbUnmarshaller.unmarshal(new StreamSource( new StringReader( xmlStr.toString() ) ));
 					} catch (JAXBException e) {
+						e.printStackTrace();
 						return new UnknownService(e.getMessage());
 					}
 					
@@ -198,11 +206,13 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 			}
 		} catch (MessagingException e) {
 			e.printStackTrace();
+			return new UnknownService(e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
+			return new UnknownService(e.getMessage());
 		}
 		
-		return null;
+		return new UnknownService("Service content is invalid.");
 	}
 
 }

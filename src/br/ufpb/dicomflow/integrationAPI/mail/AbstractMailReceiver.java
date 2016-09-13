@@ -17,6 +17,8 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail;
 
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -40,8 +42,9 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 		@Override
 		public abstract MailServiceExtractorIF getServiceExtractor();
 
+		
 		@Override
-		public List<ServiceIF> receive(FilterIF filter) {
+		public List<ServiceIF> receiveCipher(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 
 			List<ServiceIF> services = new ArrayList<ServiceIF>();
 
@@ -52,8 +55,9 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 				getMessageReader().openFolder(session);
 
 				List<Message> messages = getMessageReader().getMessages( filter);
+				
 
-				services = getServiceExtractor().getServices(messages);
+				services = getServiceExtractor().getServices(messages, signCert, encryptCert, privateKey);
 				
 				getMessageReader().closeFolder();
 
@@ -66,7 +70,14 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 		}
 		
 		@Override
-		public List<byte[]> receiveAttachs(FilterIF filter) {
+		public List<ServiceIF> receive(FilterIF filter) {
+
+			return receiveCipher(filter,null, null, null);
+
+		}
+		
+		@Override
+		public List<byte[]> receiveCipherAttachs(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 
 			List<byte[]> attachs = new ArrayList<byte[]>();
 
@@ -78,7 +89,7 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 
 				List<Message> messages = getMessageReader().getMessages(filter);
 				
-				attachs = getServiceExtractor().getAttachs(messages);
+				attachs = getServiceExtractor().getAttachs(messages, signCert, encryptCert, privateKey);
 
 				getMessageReader().closeFolder();
 
@@ -90,9 +101,16 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 
 		}
 		
+		@Override
+		public List<byte[]> receiveAttachs(FilterIF filter) {
+			
+			return receiveCipherAttachs( filter, null, null, null);
+
+		}
+		
 		
 		@Override
-		public List<MessageIF> receiveMessages(FilterIF filter) {
+		public List<MessageIF> receiveCipherMessages(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 
 			List<MessageIF> messagesIF = new ArrayList<MessageIF>();
 
@@ -104,7 +122,7 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 				
 				List<Message> messages = getMessageReader().getMessages(filter);
 
-				messagesIF = getServiceExtractor().getServicesAndAttachs(messages);
+				messagesIF = getServiceExtractor().getServicesAndAttachs(messages, signCert, encryptCert, privateKey);
 				
 				getMessageReader().closeFolder();
 
@@ -116,6 +134,14 @@ public abstract class AbstractMailReceiver implements MailReceiverIF {
 
 		}
 
+		
+		@Override
+		public List<MessageIF> receiveMessages(FilterIF filter) {
+
+			return receiveCipherMessages( filter,  null, null,  null);
+
+		}
+		
 		@Override
 		public  void releaseMessages(){
 			getMessageReader().closeFolder();

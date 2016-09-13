@@ -17,6 +17,8 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail;
 
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 import javax.mail.Message;
@@ -26,17 +28,19 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 public interface MailServiceExtractorIF {
 	
 	
-	public ServiceIF getService(Message message);
+	public ServiceIF getService(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
 	
-	public List<ServiceIF> getServices(List<Message> messages); 
+	public List<ServiceIF> getServices(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey); 
 	
-	public byte[] getAttach(Message message);
+	public byte[] getAttach(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
 	
-	public List<byte[]> getAttachs(List<Message> messages);
+	public List<byte[]> getAttachs(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
 	
-	public MessageIF getServiceAndAttach(Message message);
+	public MessageIF getServiceAndAttach(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
 	
-	public List<MessageIF> getServicesAndAttachs(List<Message> messages);
+	public List<MessageIF> getServicesAndAttachs(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
+	
+	
 	
 	
 

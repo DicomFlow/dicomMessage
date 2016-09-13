@@ -29,9 +29,6 @@ public class MailContentBuilderFactory {
 		case MailContentBuilderIF.SMTP_SIMPLE_CONTENT_STRATEGY:
 			contentStrategy = new SMTPContentBuilder();
 			break;
-		case MailContentBuilderIF.SMTP_CIPHER_CONTENT_STRATEGY:
-			contentStrategy = new SMTPCipherContentBuilder();
-			break;
 		default:
 			contentStrategy = null;
 			break;

@@ -18,13 +18,38 @@
 package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
 import java.io.IOException;
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
+import javax.mail.Part;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import org.bouncycastle.cert.X509CertificateHolder;
+import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import org.bouncycastle.cms.CMSException;
+import org.bouncycastle.cms.RecipientId;
+import org.bouncycastle.cms.RecipientInformation;
+import org.bouncycastle.cms.RecipientInformationStore;
+import org.bouncycastle.cms.SignerInformation;
+import org.bouncycastle.cms.SignerInformationStore;
+import org.bouncycastle.cms.jcajce.JcaSimpleSignerInfoVerifierBuilder;
+import org.bouncycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
+import org.bouncycastle.cms.jcajce.JceKeyTransRecipientId;
+import org.bouncycastle.mail.smime.SMIMEEnveloped;
+import org.bouncycastle.mail.smime.SMIMEException;
+import org.bouncycastle.mail.smime.SMIMESigned;
+import org.bouncycastle.mail.smime.SMIMEUtil;
+import org.bouncycastle.operator.OperatorCreationException;
+import org.bouncycastle.util.Store;
 
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
@@ -36,17 +61,28 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.UnknownService;
 public class SMTPServiceExtractor implements MailServiceExtractorIF {
 
 	@Override
-	public ServiceIF getService(Message message) {
+	public ServiceIF getService(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
 		try {
 		
 			MailHeadBuilderIF headBuilder = MailHeadBuilderFactory.createHeadStrategy(MailHeadBuilderIF.SMTP_HEAD_STRATEGY);
 			
-			int contentType = Integer.valueOf(headBuilder.getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
-			MailContentBuilderIF contentStrategy = MailContentBuilderFactory.createContentStrategy(contentType);
+			int contentBuilderType = Integer.valueOf(headBuilder.getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
+			MailContentBuilderIF contentStrategy = MailContentBuilderFactory.createContentStrategy(contentBuilderType);
 	
 			int serviceType = Integer.valueOf(headBuilder.getHeaderValue(message,MailXTags.SERVICE_TYPE_X_TAG));
-			ServiceIF service = contentStrategy.getService((Multipart) message.getContent(), serviceType);
+			
+			ServiceIF service = new UnknownService();
+			
+			if(signCert != null && encryptCert != null && privateKey != null){
+				
+				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+				service = contentStrategy.getService(content, serviceType);
+					
+			}else{
+				
+				service = contentStrategy.getService((Multipart) message.getContent(), serviceType);
+			}
 			
 			return service;
 			
@@ -56,12 +92,129 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return new UnknownService(e.getMessage());
+		} catch (CMSException e) {
+			e.printStackTrace();
+			return new UnknownService(e.getMessage());
+		} catch (SMIMEException e) {
+			e.printStackTrace();
+			return new UnknownService(e.getMessage());
+		} catch (OperatorCreationException e) {
+			e.printStackTrace();
+			return new UnknownService(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new UnknownService(e.getMessage());
 		}
 		
 	}
+	
+	private Multipart getDecryptedContent(Message message, X509Certificate cert, PrivateKey privateKey) throws OperatorCreationException, Exception {
+		RecipientId     recId = new JceKeyTransRecipientId(cert);
+		SMIMEEnveloped       m = new SMIMEEnveloped((MimeMessage)message);
+
+        RecipientInformationStore   recipients = m.getRecipientInfos();
+        RecipientInformation        recipient = recipients.get(recId);
+
+        MimeBodyPart        res = SMIMEUtil.toMimeBodyPart(recipient.getContent(new JceKeyTransEnvelopedRecipient(privateKey)));
+        MimeMultipart content = (MimeMultipart) res.getContent();
+        Multipart decryptedContent = null;
+        if(checkSignature(content, cert)){
+	        for (int i = 0; i < content.getCount(); i++) {
+	        	Part part = content.getBodyPart(i);
+				
+				String contentType = part.getContentType();
+	
+				if (contentType.toLowerCase().startsWith("multipart/mixed")) {
+					decryptedContent = (Multipart) part.getContent();
+				}
+				
+				
+	        }
+        }
+        
+        return decryptedContent;
+	}
+
+	
+	
+
+	private boolean checkSignature(MimeMultipart content, X509Certificate cert) throws OperatorCreationException, MessagingException, CMSException, IOException, SMIMEException, Exception {
+		for (int i = 0; i < content.getCount(); i++) {
+        	Part part = content.getBodyPart(i);
+			
+			String contentType = part.getContentType();
+			
+			if (contentType.toLowerCase().startsWith("multipart/signed") 
+				     || contentType.toLowerCase().startsWith("application/pkcs7-mime") 
+					 || contentType.toLowerCase().startsWith("application/x-pkcs7-mime") 
+					 || contentType.toLowerCase().startsWith("application/pkcs7-signature"))
+			{
+				//
+				// in this case the content is wrapped in the signature block.
+				//
+				SMIMESigned s = new SMIMESigned(content);
+	
+				return verify(s);
+			}
+			
+		}
+		return false;
+			
+	}
+	
+	/**
+     * verify the signature (assuming the cert is contained in the message)
+     */
+	private boolean verify(SMIMESigned s) throws Exception {
+		//
+		// extract the information to verify the signatures.
+		//
+
+		//
+		// certificates and crls passed in the signature - this must happen before
+		// s.getSignerInfos()
+		//
+		Store certs = s.getCertificates();
+
+		//
+		// SignerInfo blocks which contain the signatures
+		//
+		SignerInformationStore  signers = s.getSignerInfos();
+
+		Collection              c = signers.getSigners();
+		Iterator                it = c.iterator();
+
+		//
+		// check each signer
+		//
+		while (it.hasNext())
+		{
+			SignerInformation   signer = (SignerInformation)it.next();
+			Collection          certCollection = certs.getMatches(signer.getSID());
+
+			Iterator        certIt = certCollection.iterator();
+			X509Certificate cert = new JcaX509CertificateConverter().getCertificate((X509CertificateHolder)certIt.next());
+
+
+			//
+			// verify that the sign is correct and that it was generated
+			// when the certificate was current
+			//
+			if (signer.verify(new JcaSimpleSignerInfoVerifierBuilder().build(cert)))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		return false;
+	}
+
 
 	@Override
-	public List<ServiceIF> getServices(List<Message> messages) {
+	public List<ServiceIF> getServices(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
 		List<ServiceIF> services = new ArrayList<ServiceIF>();
 		
@@ -69,7 +222,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 		while (iterator.hasNext()) {
 			
 			Message message = (Message) iterator.next();
-			ServiceIF service = getService(message);
+			ServiceIF service = getService(message, signCert, encryptCert, privateKey);
 			services.add(service);
 
 		}
@@ -77,7 +230,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 	}
 	
 	@Override
-	public byte[] getAttach(Message message) {
+	public byte[] getAttach(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
 		try {
 		
@@ -86,22 +239,44 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 			int contentType = Integer.valueOf(headBuilder.getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
 			MailContentBuilderIF contentStrategy = MailContentBuilderFactory.createContentStrategy(contentType);
 	
-			byte[] attach = contentStrategy.getAttach((Multipart) message.getContent());
+			
+			byte[] attach = new byte[]{};
+			if(signCert != null && encryptCert != null && privateKey != null){
+					
+				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+				attach = contentStrategy.getAttach(content);
+				
+			}else{
+				
+				attach = contentStrategy.getAttach((Multipart) message.getContent());
+			}
 			
 			return attach;
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			return new byte[]{};
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			return null;
+			return new byte[]{};
+		} catch (CMSException e) {
+			e.printStackTrace();
+			return new byte[]{};
+		} catch (SMIMEException e) {
+			e.printStackTrace();
+			return new byte[]{};
+		} catch (OperatorCreationException e) {
+			e.printStackTrace();
+			return new byte[]{};
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new byte[]{};
 		}
 		
 	}
 	
 	@Override
-	public List<byte[]> getAttachs(List<Message> messages) {
+	public List<byte[]> getAttachs(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
 		List<byte[]> attachs = new ArrayList<byte[]>();
 		
@@ -109,7 +284,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 		while (iterator.hasNext()) {
 			
 			Message message = (Message) iterator.next();
-			byte[] file = getAttach(message);
+			byte[] file = getAttach(message, signCert, encryptCert, privateKey);
 			attachs.add(file);
 
 		}
@@ -117,13 +292,10 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 	}
 	
 	@Override
-	public MessageIF getServiceAndAttach(Message message) {
+	public MessageIF getServiceAndAttach(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
+		MailHeadBuilderIF headBuilder = MailHeadBuilderFactory.createHeadStrategy(MailHeadBuilderIF.SMTP_HEAD_STRATEGY);
 		try {
-		
-			
-			
-			MailHeadBuilderIF headBuilder = MailHeadBuilderFactory.createHeadStrategy(MailHeadBuilderIF.SMTP_HEAD_STRATEGY);
 			
 			int contentType = Integer.valueOf(headBuilder.getHeaderValue(message, MailXTags.CONTENT_BUILDER_X_TAG));
 			MailContentBuilderIF contentStrategy = MailContentBuilderFactory.createContentStrategy(contentType);
@@ -131,23 +303,53 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 			
 			MessageIF smtpMessage = new SMTPMessage();
 			smtpMessage.setMailXTags(headBuilder.getMailXTags(message));
-			smtpMessage.setService(contentStrategy.getService((Multipart) message.getContent(), serviceType));
-			smtpMessage.setAttach(contentStrategy.getAttach((Multipart) message.getContent()));
+			
+			if(signCert != null && encryptCert != null && privateKey != null){
+					
+				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+		        smtpMessage.setService(contentStrategy.getService(content, serviceType));
+				smtpMessage.setAttach(contentStrategy.getAttach(content));
+				
+			}else{
+				
+				smtpMessage.setService(contentStrategy.getService((Multipart) message.getContent(), serviceType));
+				smtpMessage.setAttach(contentStrategy.getAttach((Multipart) message.getContent()));
+			}
 			
 			return smtpMessage;
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-			return null;
+			return createErrorMessageIF(message, headBuilder, e);
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			return null;
+			return createErrorMessageIF(message, headBuilder, e);
+		} catch (CMSException e) {
+			e.printStackTrace();
+			return createErrorMessageIF(message, headBuilder, e);
+		} catch (SMIMEException e) {
+			e.printStackTrace();
+			return createErrorMessageIF(message, headBuilder, e);
+		} catch (OperatorCreationException e) {
+			e.printStackTrace();
+			return createErrorMessageIF(message, headBuilder, e);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return createErrorMessageIF(message, headBuilder, e);
 		}
 		
 	}
+
+	private MessageIF createErrorMessageIF(Message message, MailHeadBuilderIF headBuilder, Exception e) {
+		MessageIF smtpMessage = new SMTPMessage();
+		smtpMessage.setMailXTags(headBuilder.getMailXTags(message));
+		smtpMessage.setService(new UnknownService(e.getMessage()));
+		smtpMessage.setAttach(new byte[]{});
+		return smtpMessage;
+	}
 	
 	@Override
-	public List<MessageIF> getServicesAndAttachs(List<Message> messages) {
+	public List<MessageIF> getServicesAndAttachs(List<Message> messages, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) {
 		
 		List<MessageIF> servicesAndattachs = new ArrayList<MessageIF>();
 		
@@ -155,7 +357,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 		while (iterator.hasNext()) {
 			
 			Message message = (Message) iterator.next();
-			MessageIF messageIF = getServiceAndAttach(message);
+			MessageIF messageIF = getServiceAndAttach(message, signCert, encryptCert, privateKey);
 			servicesAndattachs.add(messageIF);
 
 		}

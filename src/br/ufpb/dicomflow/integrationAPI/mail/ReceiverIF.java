@@ -17,6 +17,8 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail;
 
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
@@ -24,7 +26,15 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 public interface ReceiverIF {
 	
 	public List<ServiceIF> receive(FilterIF filter);
+	
 	public List<byte[]> receiveAttachs(FilterIF filter);
+	
 	public List<MessageIF> receiveMessages(FilterIF filter);
+	
+	public List<ServiceIF> receiveCipher(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
+	
+	public List<byte[]> receiveCipherAttachs(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
+	
+	public List<MessageIF> receiveCipherMessages(FilterIF filter, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey);
 
 }

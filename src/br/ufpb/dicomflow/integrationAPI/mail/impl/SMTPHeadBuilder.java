@@ -65,8 +65,6 @@ public class SMTPHeadBuilder implements MailHeadBuilderIF {
 			message.addHeader(MailXTags.CONTENT_BUILDER_X_TAG, String.valueOf(contentBuilder.getType()));
 	        
 			message.addHeader(MailXTags.DISPOSITION_NOTIFICATION_TO_X_TAG, this.from);
-			//TODO Usar com PGP
-			//message.addHeader(MailXTags.DISPOSITION_NOTIFICARION_KEY_ID_X_TAG, arg1);
 	        
 		} catch (AddressException e) {
 			e.printStackTrace();
