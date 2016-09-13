@@ -94,7 +94,8 @@ public class EncryptedMessageTestCase extends GenericTestCase {
         
         KeyStore keystore = KeyStore.getInstance("JKS");
 		keystore.load(new FileInputStream("./bin/br/ufpb/dicomflow/integrationAPI/tests/dicomflow.jks"), "pr0t0c0l0ap1".toCharArray());
-		Certificate[] chain = keystore.getCertificateChain("dicomflow.org");
+		Certificate[] signChain = keystore.getCertificateChain("dicomflow.org");
+		Certificate encryptCert = keystore.getCertificate("apiintegracao.org");
 
 		PrivateKey privateKey = (PrivateKey)keystore.getKey("dicomflow.org",
 				"pr0t0c0l0ap1".toCharArray());
@@ -114,11 +115,25 @@ public class EncryptedMessageTestCase extends GenericTestCase {
         sender.setHeadBuilder(smtpHeadStrategy);
         sender.setContentBuilder(smtpCipherContentStrategy);
         
-        messageID = sender.sendCipher(storageDelete, (X509Certificate) chain[0], (X509Certificate) chain[0], privateKey);
+        messageID = sender.sendCipher(storageDelete, (X509Certificate) signChain[0], (X509Certificate) encryptCert, privateKey);
         System.out.println("MESSAGE ID ======> " + messageID);
         
         
         System.out.println("MESSAGE-ID : " + messageID);
+        
+        
+        keystore = KeyStore.getInstance("JKS");
+		keystore.load(new FileInputStream("./bin/br/ufpb/dicomflow/integrationAPI/tests/apiintegracao.jks"), "pr0t0c0l0ap1".toCharArray());
+		Certificate[] encryptChain = keystore.getCertificateChain("apiintegracao.org");
+		Certificate signCert = keystore.getCertificate("apidicomflow.org");
+
+		privateKey = (PrivateKey)keystore.getKey("apiintegracao.org",
+				"pr0t0c0l0ap1".toCharArray());
+		if (privateKey == null)
+		{
+			throw new Exception("cannot find private key for alias: "
+					+ "apiintegracao.org");
+		}
 		
         FilterIF filter = new SMTPFilter();
 		filter.setIdMessage(messageID+"@dicomflow.com");
@@ -139,7 +154,7 @@ public class EncryptedMessageTestCase extends GenericTestCase {
 		receiver.setServiceExtractor(serviceExtractor2);
 		
 		
-		List<ServiceIF> services = receiver.receiveCipher(filter, (X509Certificate) chain[0], (X509Certificate) chain[0], privateKey);
+		List<ServiceIF> services = receiver.receiveCipher(filter, (X509Certificate) signCert, (X509Certificate) encryptChain[0], privateKey);
 		Iterator<ServiceIF> iterator = services.iterator();
 		while (iterator.hasNext()) {
 			ServiceIF serviceIF = (ServiceIF) iterator.next();

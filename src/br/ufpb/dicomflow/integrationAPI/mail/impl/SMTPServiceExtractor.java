@@ -76,7 +76,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 			
 			if(signCert != null && encryptCert != null && privateKey != null){
 				
-				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+				Multipart content = getDecryptedContent(message, signCert, encryptCert, privateKey);
 				service = contentStrategy.getService(content, serviceType);
 					
 			}else{
@@ -108,8 +108,8 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 		
 	}
 	
-	private Multipart getDecryptedContent(Message message, X509Certificate cert, PrivateKey privateKey) throws OperatorCreationException, Exception {
-		RecipientId     recId = new JceKeyTransRecipientId(cert);
+	private Multipart getDecryptedContent(Message message, X509Certificate signCert, X509Certificate encryptCert, PrivateKey privateKey) throws OperatorCreationException, Exception {
+		RecipientId     recId = new JceKeyTransRecipientId(encryptCert);
 		SMIMEEnveloped       m = new SMIMEEnveloped((MimeMessage)message);
 
         RecipientInformationStore   recipients = m.getRecipientInfos();
@@ -118,7 +118,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
         MimeBodyPart        res = SMIMEUtil.toMimeBodyPart(recipient.getContent(new JceKeyTransEnvelopedRecipient(privateKey)));
         MimeMultipart content = (MimeMultipart) res.getContent();
         Multipart decryptedContent = null;
-        if(checkSignature(content, cert)){
+        if(checkSignature(content, signCert)){
 	        for (int i = 0; i < content.getCount(); i++) {
 	        	Part part = content.getBodyPart(i);
 				
@@ -243,7 +243,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 			byte[] attach = new byte[]{};
 			if(signCert != null && encryptCert != null && privateKey != null){
 					
-				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+				Multipart content = getDecryptedContent(message, signCert, encryptCert, privateKey);
 				attach = contentStrategy.getAttach(content);
 				
 			}else{
@@ -306,7 +306,7 @@ public class SMTPServiceExtractor implements MailServiceExtractorIF {
 			
 			if(signCert != null && encryptCert != null && privateKey != null){
 					
-				Multipart content = getDecryptedContent(message, encryptCert, privateKey);
+				Multipart content = getDecryptedContent(message, signCert, encryptCert, privateKey);
 		        smtpMessage.setService(contentStrategy.getService(content, serviceType));
 				smtpMessage.setAttach(contentStrategy.getAttach(content));
 				
