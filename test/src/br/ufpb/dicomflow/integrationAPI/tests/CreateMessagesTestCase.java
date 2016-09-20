@@ -20,9 +20,7 @@ package br.ufpb.dicomflow.integrationAPI.tests;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -30,16 +28,11 @@ import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
 
-import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
-import br.ufpb.dicomflow.integrationAPI.mail.MailMessageReaderIF;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPAuthenticator;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPMessageReader;
-import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPReceiver;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Completed;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Credentials;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Object;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Result;
-import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
+import br.ufpb.dicomflow.integrationAPI.message.xml.SharingPut;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageSave;
 import br.ufpb.dicomflow.integrationAPI.message.xml.URL;
@@ -118,7 +111,7 @@ public class CreateMessagesTestCase extends GenericTestCase {
 
 		try {
 			File file = new File(outputDir + "storageSave.xml");
-			JAXBContext jaxbContext = JAXBContext.newInstance(StorageSave.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SharingPut.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -131,6 +124,44 @@ public class CreateMessagesTestCase extends GenericTestCase {
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	
+	@Test	
+	public void testSharingPutMessage() {
+
+		SharingPut sharingPut = new SharingPut();
+
+		sharingPut.setMessageID("123456");
+		sharingPut.setTimestamp("12346567346");
+		sharingPut.setTimeout("23123");			
+
+		URL url = new URL();
+		url.setValue("a");
+		Credentials cred = new Credentials();
+		cred.setValue("credentialValue");
+		url.setCredentials(cred);
+		
+		ArrayList<URL> urls = new ArrayList<URL>();
+		urls.add(url);		
+		sharingPut.setUrls(urls);
+
+		try {
+			File file = new File(outputDir + "sharingPut.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(SharingPut.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+			jaxbMarshaller.marshal(sharingPut, file);
+			jaxbMarshaller.marshal(sharingPut, System.out);
+			
+			assertTrue(file.exists() && file.length() > 0);
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

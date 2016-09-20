@@ -22,6 +22,8 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.BasicService;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateRequest;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
+import br.ufpb.dicomflow.integrationAPI.message.xml.SharingPut;
+import br.ufpb.dicomflow.integrationAPI.message.xml.SharingResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageDelete;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageSave;
@@ -58,6 +60,12 @@ public class ServiceFactory {
 			break;
 		case ServiceIF.CERTIFICATE_RESULT:
 			service = createCertificateResult();
+			break;
+		case ServiceIF.SHARING_PUT:
+			service = createSharingPut();
+			break;			
+		case ServiceIF.SHARING_RESULT:
+			service = createSharingResult();
 			break;
 		default:
 			service = new BasicService();
@@ -193,6 +201,46 @@ public class ServiceFactory {
 		try {
 			
 			service = createGenericService(CertificateResult.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createSharingPut(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(SharingPut.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createSharingResult(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(SharingResult.class);
 			
 		} catch (InstantiationException e) {
 			e.printStackTrace();

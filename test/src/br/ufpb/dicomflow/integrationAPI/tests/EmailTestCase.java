@@ -42,6 +42,7 @@ import br.ufpb.dicomflow.integrationAPI.main.ServiceFactory;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Credentials;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Object;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
+import br.ufpb.dicomflow.integrationAPI.message.xml.SharingPut;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageDelete;
 import br.ufpb.dicomflow.integrationAPI.message.xml.URL;
 
@@ -234,6 +235,51 @@ public class EmailTestCase extends GenericTestCase {
         sender.send(storageDelete);
         
 
+	}
+	
+	@Test
+	public static void testSendSharingPut() {
+		
+		SharingPut sharingPut = (SharingPut) ServiceFactory.createService(ServiceIF.SHARING_PUT, DefaultIdMessageGeneratorStrategy.getInstance());
+		sharingPut.setTimestamp("12346567346");
+		sharingPut.setTimeout("23123");		
+		
+		sharingPut.setMessageID("123456");
+		sharingPut.setTimestamp("12346567346");
+		sharingPut.setTimeout("23123");			
+
+		URL url = new URL();
+		url.setValue("a");
+		Credentials cred = new Credentials();
+		cred.setValue("credentialValue");
+		url.setCredentials(cred);
+		
+		ArrayList<URL> urls = new ArrayList<URL>();
+		urls.add(url);		
+		sharingPut.setUrls(urls);
+						
+			
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "25");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "25");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+        props.put("mail.smtp.socketFactory.fallback", "false");
+
+        MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("protocolointegracao@gmail.com", "pr0t0c0l0ap1");
+        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder("protocolointegracao@gmail.com", "dicomflow@gmail.com", "dominio.com");
+        MailContentBuilderIF smtpSimpleContentStrategy = new SMTPContentBuilder();
+        
+        SMTPSender sender = new SMTPSender();
+        sender.setProperties(props);
+        sender.setAuthenticatorBuilder(smtpAuthenticatorStrategy);
+        sender.setHeadBuilder(smtpHeadStrategy);
+        sender.setContentBuilder(smtpSimpleContentStrategy);
+        
+        sender.send(sharingPut);     
 	}
 	
 	@Test
