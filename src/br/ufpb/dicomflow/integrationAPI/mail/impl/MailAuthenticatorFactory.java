@@ -15,19 +15,26 @@
  * 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package br.ufpb.dicomflow.integrationAPI.mail;
+package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
-import javax.mail.Authenticator;
+import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 
-public interface MailAuthenticatorIF {
+public class MailAuthenticatorFactory {
 	
-	public static final int SMTP_AUTHENTICATOR = 1;
-	
-	
-	public String getEmail();
-	
-	public String getPassword();
-	
-	public Authenticator getAuthenticator();
+	public static MailAuthenticatorIF createHeadStrategy(int type, String mail, String pwd){
+		
+		MailAuthenticatorIF authStrategy;
+		
+		switch (type) {
+		case MailAuthenticatorIF.SMTP_AUTHENTICATOR:
+			authStrategy = new SMTPAuthenticator(mail, pwd);
+			break;
+		default:
+			authStrategy = null;
+			break;
+		}
+		
+		return authStrategy;
+	}
 
 }
