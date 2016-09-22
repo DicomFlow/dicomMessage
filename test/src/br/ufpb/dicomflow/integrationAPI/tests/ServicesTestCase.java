@@ -21,6 +21,8 @@ import java.util.Properties;
 
 import org.junit.Test;
 
+import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.impl.SMTPFilter;
@@ -34,12 +36,12 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.StorageDelete;
 public class ServicesTestCase extends GenericTestCase {
 	
 	@Test
-	public static void testSendStorageDelete() {
+	public static void testSendStorageDelete() throws PropertyNotFoundException {
 		StorageDelete obj = (StorageDelete) ServiceFactory.createService(ServiceIF.STORAGE_DELETE, DefaultIdMessageGeneratorStrategy.getInstance());// new StorageDelete();           
 
-		
+		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
 		try {
-			ServiceProcessor.sendMessage(obj, "dicomflow@gmail.com", null, null, null, null);
+			ServiceProcessor.sendMessage(obj, IntegrationAPIProperties.getInstance().getProperty("authentication.login"), null, null, null, null);
 		} catch (ServiceCreationException e) {
 			fail();
 		}
