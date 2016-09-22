@@ -17,8 +17,8 @@ provider.folder=INBOX
 #authentication properties
 authentication.login=mail1@gmail.com
 authentication.password=password1
-#authentication properties (for test classes)
-authentication.login.2=mail2@gmail.com
-authentication.password.2=password2
 #log properties
 log.min.severity=info
+#properties for test classes (remove in production)
+authentication.login.2=mail2@gmail.com
+authentication.password.2=password2
