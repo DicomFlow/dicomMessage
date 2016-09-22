@@ -14,10 +14,11 @@ mail.imap.socketFactory.fallback=false
 mail.store.protocol=imaps
 provider.host=imap.googlemail.com
 provider.folder=INBOX
-#authentication properties
-authentication.login=protocolointegracao@gmail.com
-authentication.password=pr0t0c0l0ap1
-#authentication.login=dicomflow@gmail.com
-#authentication.password=pr0t0c0l0ap1
+#authentication properties 1
+authentication.login=mail1@gmail.com
+authentication.password=password1
+#authentication properties 2
+authentication.login.2=mail2@gmail.com
+authentication.password.2=password2
 #log properties
 log.min.severity=info
