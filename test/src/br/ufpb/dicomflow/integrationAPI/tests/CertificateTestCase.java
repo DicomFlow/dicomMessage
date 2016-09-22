@@ -59,7 +59,7 @@ public class CertificateTestCase extends GenericTestCase {
 		certRequest.setDomain("dicomflow.com");
 		certRequest.setPort(8443);
 		
-		File attachment = new File(certDir+File.separator+"dicommessage.crt");
+		File attachment = new File("./bin/br/ufpb/dicomflow/integrationAPI/tests/dicommessage.crt");
 						
 			
 		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
@@ -108,7 +108,7 @@ public class CertificateTestCase extends GenericTestCase {
 		while (iterator2.hasNext()) {
 			byte[] bs = (byte[]) iterator2.next();
 			System.out.println("BYTE ARRAY LEGTH : " + bs.length);
-			File cert = new File(certDir+File.separator+"attach.crt");
+			File cert = new File("./bin/br/ufpb/dicomflow/integrationAPI/tests/attach.crt");
 			try {
 				if(!cert.exists()){
 					cert.createNewFile();
