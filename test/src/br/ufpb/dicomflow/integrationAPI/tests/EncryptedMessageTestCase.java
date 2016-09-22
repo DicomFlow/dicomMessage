@@ -29,6 +29,7 @@ import java.util.Properties;
 
 import org.junit.Test;
 
+import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
@@ -81,15 +82,10 @@ public class EncryptedMessageTestCase extends GenericTestCase {
 		
 						
 			
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "25");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "25");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
-        props.put("mail.smtp.socketFactory.fallback", "false");
+		
+        
+        IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
         
         
         KeyStore keystore = KeyStore.getInstance("JKS");
@@ -104,9 +100,9 @@ public class EncryptedMessageTestCase extends GenericTestCase {
 			throw new Exception("cannot find private key for alias: "
 					+ "dicomflow.org");
 		}
-
-        MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("protocolointegracao@gmail.com", "pr0t0c0l0ap1");
-        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder("protocolointegracao@gmail.com", "protocolointegracao@gmail.com", "dicomflow.com");
+        
+        MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
+        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), props.getProperty("authentication.login"), props.getProperty("domain"));
         MailContentBuilderIF smtpCipherContentStrategy = new SMTPContentBuilder();
         
         SMTPSender sender = new SMTPSender();
@@ -136,19 +132,19 @@ public class EncryptedMessageTestCase extends GenericTestCase {
 		}
 		
         FilterIF filter = new SMTPFilter();
-		filter.setIdMessage(messageID+"@dicomflow.com");
+		filter.setIdMessage(messageID+"@"+props.getProperty("domain"));
 		
-		Properties receiveProps = new Properties();
-		receiveProps.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		receiveProps.put("mail.imap.socketFactory.fallback", "false");
-		receiveProps.put("mail.store.protocol", "imaps");
+		props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator("protocolointegracao@gmail.com", "pr0t0c0l0ap1");
-		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor2 = new SMTPServiceExtractor();
 		
+		
+		
 		SMTPReceiver receiver = new SMTPReceiver();
-		receiver.setProperties(receiveProps);
+		receiver.setProperties(props);
 		receiver.setAuthenticatorBuilder(smtpAuthenticatorStrategy2);
 		receiver.setMessageReader(smtpMesssaStrategy);
 		receiver.setServiceExtractor(serviceExtractor2);

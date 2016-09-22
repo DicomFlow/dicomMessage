@@ -56,7 +56,7 @@ public class CertificateTestCase extends GenericTestCase {
 		
 		
 		CertificateRequest certRequest = (CertificateRequest) ServiceFactory.createService(ServiceIF.CERTIFICATE_REQUEST);
-		certRequest.setDomain("dicomflow.com");
+		certRequest.setDomain("dominio.com");
 		certRequest.setPort(8443);
 		
 		File attachment = new File("./bin/br/ufpb/dicomflow/integrationAPI/tests/dicommessage.crt");
@@ -81,8 +81,9 @@ public class CertificateTestCase extends GenericTestCase {
         
         System.out.println("MESSAGE-ID : " + messageID);
 		FilterIF filter = new SMTPFilter();
-		filter.setIdMessage(messageID+"@dicomflow.com");
+		filter.setIdMessage(messageID+"@"+props.getProperty("domain"));
 		
+		props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
 		
 		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));

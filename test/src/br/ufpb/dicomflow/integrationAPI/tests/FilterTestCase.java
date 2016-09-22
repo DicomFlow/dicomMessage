@@ -43,6 +43,8 @@ import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
 
+import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailHeadBuilderIF;
@@ -67,16 +69,16 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.URL;
 public class FilterTestCase extends GenericTestCase {
 	
 	@Test
-	public void testServiceTypeFilter() {	
+	public void testServiceTypeFilter() throws PropertyNotFoundException {	
 
-		Properties props = new Properties();// System.getProperties();
-		props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.put("mail.imap.socketFactory.fallback", "false");
-		props.put("mail.store.protocol", "imaps");
+		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("dicomflow@gmail.com", "pr0t0c0l0ap1");
-		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
+		
 		SMTPReceiver receiver = new SMTPReceiver();
 		receiver.setProperties(props);
 		receiver.setAuthenticatorBuilder(smtpAuthenticatorStrategy);
@@ -95,15 +97,14 @@ public class FilterTestCase extends GenericTestCase {
 	}
 	
 	@Test
-	public void testDateFilter() {	
+	public void testDateFilter() throws PropertyNotFoundException {	
 
-		Properties props = new Properties();// System.getProperties();
-		props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.put("mail.imap.socketFactory.fallback", "false");
-		props.put("mail.store.protocol", "imaps");
+		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("dicomflow@gmail.com", "pr0t0c0l0ap1");
-		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();
 		receiver.setProperties(props);
@@ -134,15 +135,14 @@ public class FilterTestCase extends GenericTestCase {
 	}
 	
 	@Test
-	public void testDateAndServiceTypeFilter() {	
+	public void testDateAndServiceTypeFilter() throws PropertyNotFoundException {	
 
-		Properties props = new Properties();// System.getProperties();
-		props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.put("mail.imap.socketFactory.fallback", "false");
-		props.put("mail.store.protocol", "imaps");
+		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("dicomflow@gmail.com", "pr0t0c0l0ap1");
-		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();
 		receiver.setProperties(props);
@@ -174,15 +174,14 @@ public class FilterTestCase extends GenericTestCase {
 	}
 	
 	@Test
-	public void testIdMessageFilter() {	
+	public void testIdMessageFilter() throws PropertyNotFoundException {	
 
-		Properties props = new Properties();// System.getProperties();
-		props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.put("mail.imap.socketFactory.fallback", "false");
-		props.put("mail.store.protocol", "imaps");
+		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
+		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator("dicomflow@gmail.com", "pr0t0c0l0ap1");
-		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader("imap.googlemail.com", "INBOX");
+		
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();
 		receiver.setProperties(props);

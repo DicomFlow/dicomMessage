@@ -14,10 +14,10 @@ mail.imap.socketFactory.fallback=false
 mail.store.protocol=imaps
 provider.host=imap.googlemail.com
 provider.folder=INBOX
-#authentication properties 1
+#authentication properties
 authentication.login=mail1@gmail.com
 authentication.password=password1
-#authentication properties 2
+#authentication properties (for test classes)
 authentication.login.2=mail2@gmail.com
 authentication.password.2=password2
 #log properties
