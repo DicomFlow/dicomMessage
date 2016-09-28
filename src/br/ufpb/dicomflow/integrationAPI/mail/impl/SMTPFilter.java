@@ -64,11 +64,9 @@ public class SMTPFilter implements FilterIF {
 			//System.out.println("Data inicial: " + start.toString());
 			
 			ReceivedDateTerm startDateTerm = new ReceivedDateTerm(ComparisonTerm.GE, this.getInitialDate());
-			if(term != null){
-				term = new AndTerm(term, startDateTerm);
-			}else{
-				term = startDateTerm;
-			}
+			
+			term = startDateTerm;
+		
 		}
 		
 		if(this.getFinalDate() != null){

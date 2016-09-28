@@ -46,14 +46,18 @@ public interface ServiceIF {
 	 * CertificateRequest Service Identifier
 	 */
 	public static final int CERTIFICATE_REQUEST = 6;
-	
 	/**
 	 * CertificateResult Service Identifier
 	 */
 	public static final int CERTIFICATE_RESULT = 7;
 	
+	/**
+	 * SharingPut Service Identifier
+	 */
 	public static final int SHARING_PUT = 8;
-	
+	/**
+	 * SharingResult Service Identifier
+	 */
 	public static final int SHARING_RESULT = 9;
 
 	public int getType();
