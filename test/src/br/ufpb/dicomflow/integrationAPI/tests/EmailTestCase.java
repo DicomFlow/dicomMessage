@@ -140,7 +140,7 @@ public class EmailTestCase extends GenericTestCase {
 		
 		ArrayList<URL> urls = new ArrayList<URL>();
 		urls.add(url);		
-		sharingPut.setUrls(urls);
+		sharingPut.setUrl(urls);
 						
 			
 		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);

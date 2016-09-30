@@ -17,42 +17,50 @@
  */
 package br.ufpb.dicomflow.integrationAPI.message.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * @author Danilo
+ *
+ */
+
 @XmlRootElement(name="service")
-public class StorageResult extends Service {
+public class RequestPut extends Service {
 	
-	public static final String STORAGE_RESULT_NAME = "Storage";
-	public static final String STORAGE_RESULT_ACTION = "Result";
-	public static final String STORAGE_RESULT_VERSION = "1.0";
+	public static final String REQUEST_PUT_NAME = "Request";
+	public static final String REQUEST_PUT_ACTION = "Put";
+	public static final String REQUEST_PUT_VERSION = "1.0";
 	
-	private List<Result> result;
+	public static final String TYPE_REPORT = "REPORT";
+	public static final String TYPE_IMAGE_PROCESSING = "IMAGE_PROCESSING";
 	
-	public StorageResult(){
-		super.setName(STORAGE_RESULT_NAME);
-		super.setAction(STORAGE_RESULT_ACTION);
-		super.setVersion(STORAGE_RESULT_NAME);
-		super.setType(ServiceIF.STORAGE_RESULT);
-		this.result = new ArrayList<Result>();
-		
+	private String requestType;
+	
+	private URL url;
+	
+	public RequestPut(){
+		super.setName(REQUEST_PUT_NAME);
+		super.setAction(REQUEST_PUT_ACTION);
+		super.setVersion(REQUEST_PUT_VERSION);
+		super.setType(ServiceIF.REQUEST_PUT);
 	}
 	
-	@XmlElementWrapper(name="results")
-	public void setResult(List<Result> result) {
-		this.result = result;
-	}
-
-	public List<Result> getResult() {
-		return result;
-	}
-	
-	public boolean addResult(Result result){
-		return this.result.add(result);
+	public String getRequestType() {
+		return requestType;
 	}
 
+	public void setRequestType(String requestType) {
+		this.requestType = requestType;
+	}
 
+	public URL getUrl() {
+		return url;
+	}
+
+	public void setUrl(URL url) {
+		this.url = url;
+	}
+	
+	
 }

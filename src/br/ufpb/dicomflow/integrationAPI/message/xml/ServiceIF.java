@@ -59,6 +59,40 @@ public interface ServiceIF {
 	 * SharingResult Service Identifier
 	 */
 	public static final int SHARING_RESULT = 9;
+	
+	/**
+	 * RequestPut Service Identifier
+	 */
+	public static final int REQUEST_PUT = 10;
+	/**
+	 * RequestResult Service Identifier
+	 */
+	public static final int REQUEST_RESULT = 11;
+	
+	/**
+	 * DiscoveryVerifyAllServices Service Identifier
+	 */
+	public static final int DISCOVERY_VERIFY_ALL_SERVICES = 12;
+	
+	/**
+	 * DiscoveryVerifyServices Service Identifier
+	 */
+	public static final int DISCOVERY_VERIFY_SERVICES = 13;
+	
+	/**
+	 * DiscoveryVerifyResult Service Identifier
+	 */
+	public static final int DISCOVERY_VERIFY_RESULT = 14;
+	
+	/**
+	 * FindPut Service Identifier
+	 */
+	public static final int FIND_PUT = 15;
+	
+	/**
+	 * FindResult Service Identifier
+	 */
+	public static final int FIND_RESULT = 16;
 
 	public int getType();
 	

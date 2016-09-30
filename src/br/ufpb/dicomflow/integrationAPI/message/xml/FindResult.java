@@ -24,19 +24,19 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="service")
-public class StorageResult extends Service {
+public class FindResult extends Service {
 	
-	public static final String STORAGE_RESULT_NAME = "Storage";
-	public static final String STORAGE_RESULT_ACTION = "Result";
-	public static final String STORAGE_RESULT_VERSION = "1.0";
+	public static final String FIND_RESULT_NAME = "Find";
+	public static final String FIND_RESULT_ACTION = "Result";
+	public static final String FIND_RESULT_VERSION = "1.0";
 	
 	private List<Result> result;
 	
-	public StorageResult(){
-		super.setName(STORAGE_RESULT_NAME);
-		super.setAction(STORAGE_RESULT_ACTION);
-		super.setVersion(STORAGE_RESULT_NAME);
-		super.setType(ServiceIF.STORAGE_RESULT);
+	public FindResult(){
+		super.setName(FIND_RESULT_NAME);
+		super.setAction(FIND_RESULT_ACTION);
+		super.setVersion(FIND_RESULT_NAME);
+		super.setType(ServiceIF.FIND_RESULT);
 		this.result = new ArrayList<Result>();
 		
 	}
