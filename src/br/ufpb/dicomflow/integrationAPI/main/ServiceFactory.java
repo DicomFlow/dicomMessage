@@ -21,6 +21,13 @@ import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
 import br.ufpb.dicomflow.integrationAPI.message.xml.BasicService;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateRequest;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateResult;
+import br.ufpb.dicomflow.integrationAPI.message.xml.DiscoveryVerifyAllServices;
+import br.ufpb.dicomflow.integrationAPI.message.xml.DiscoveryVerifyResult;
+import br.ufpb.dicomflow.integrationAPI.message.xml.DiscoveryVerifyServices;
+import br.ufpb.dicomflow.integrationAPI.message.xml.FindPut;
+import br.ufpb.dicomflow.integrationAPI.message.xml.FindResult;
+import br.ufpb.dicomflow.integrationAPI.message.xml.RequestPut;
+import br.ufpb.dicomflow.integrationAPI.message.xml.RequestResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 import br.ufpb.dicomflow.integrationAPI.message.xml.SharingPut;
 import br.ufpb.dicomflow.integrationAPI.message.xml.SharingResult;
@@ -66,6 +73,27 @@ public class ServiceFactory {
 			break;			
 		case ServiceIF.SHARING_RESULT:
 			service = createSharingResult();
+			break;
+		case ServiceIF.REQUEST_PUT:
+			service = createRequestPut();
+			break;			
+		case ServiceIF.REQUEST_RESULT:
+			service = createRequestResult();
+			break;
+		case ServiceIF.DISCOVERY_VERIFY_ALL_SERVICES:
+			service = createDiscoveryVerifyAllServices();
+			break;
+		case ServiceIF.DISCOVERY_VERIFY_SERVICES:
+			service = createDiscoveryVerifyServices();
+			break;			
+		case ServiceIF.DISCOVERY_VERIFY_RESULT:
+			service = createDiscoveryVerifyResult();
+			break;
+		case ServiceIF.FIND_PUT:
+			service = createFindPut();
+			break;			
+		case ServiceIF.FIND_RESULT:
+			service = createFindResult();
 			break;
 		default:
 			service = new BasicService();
@@ -253,6 +281,147 @@ public class ServiceFactory {
 		
 		
 	}
+	
+	
+	protected static ServiceIF createRequestPut(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(RequestPut.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createRequestResult(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(RequestResult.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createDiscoveryVerifyAllServices(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(DiscoveryVerifyAllServices.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+
+	protected static ServiceIF createDiscoveryVerifyServices(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(DiscoveryVerifyServices.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createDiscoveryVerifyResult(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(DiscoveryVerifyResult.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createFindPut(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(FindPut.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createFindResult(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(FindResult.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}	
 	
 	protected  static ServiceIF createGenericService(Class serviceClass, String name, String action, String version) throws InstantiationException, IllegalAccessException, ServiceCreationException{
 		

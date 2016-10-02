@@ -24,35 +24,53 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="service")
-public class StorageResult extends Service {
+public class DiscoveryVerifyResult extends Service {
 	
-	public static final String STORAGE_RESULT_NAME = "Storage";
-	public static final String STORAGE_RESULT_ACTION = "Result";
-	public static final String STORAGE_RESULT_VERSION = "1.0";
+	public static final String DISCOVERY_VERIFY_RESULT_NAME = "Discovery";
+	public static final String DISCOVERY_VERIFY_RESULT_ACTION = "VerifyResult";
+	public static final String DISCOVERY_VERIFY_RESULT_VERSION = "1.0";
+	
+	private String timezone;
+	private int priority;
 	
 	private List<Result> result;
 	
-	public StorageResult(){
-		super.setName(STORAGE_RESULT_NAME);
-		super.setAction(STORAGE_RESULT_ACTION);
-		super.setVersion(STORAGE_RESULT_NAME);
-		super.setType(ServiceIF.STORAGE_RESULT);
+	public DiscoveryVerifyResult(){
+		super.setName(DISCOVERY_VERIFY_RESULT_NAME);
+		super.setAction(DISCOVERY_VERIFY_RESULT_ACTION);
+		super.setVersion(DISCOVERY_VERIFY_RESULT_VERSION);
+		super.setType(ServiceIF.DISCOVERY_VERIFY_RESULT);
 		this.result = new ArrayList<Result>();
-		
 	}
-	
-	@XmlElementWrapper(name="results")
-	public void setResult(List<Result> result) {
-		this.result = result;
+
+	public String getTimezone() {
+		return timezone;
+	}
+
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 	public List<Result> getResult() {
 		return result;
 	}
-	
+
+	public void setResult(List<Result> result) {
+		this.result = result;
+	}
+
 	public boolean addResult(Result result){
 		return this.result.add(result);
 	}
-
-
+	
+	
+	
 }

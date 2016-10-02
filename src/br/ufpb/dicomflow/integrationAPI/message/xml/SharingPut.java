@@ -17,6 +17,7 @@
  */
 package br.ufpb.dicomflow.integrationAPI.message.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -29,22 +30,27 @@ public class SharingPut extends Service {
 	public static final String SHARING_PUT_ACTION = "Put";
 	public static final String SHARING_PUT_VERSION = "1.0";
 	
-	private List<URL> urls;
+	private List<URL> url;
 	
 	public SharingPut(){
 		super.setName(SHARING_PUT_NAME);
 		super.setAction(SHARING_PUT_ACTION);
 		super.setVersion(SHARING_PUT_VERSION);
 		super.setType(ServiceIF.SHARING_PUT);
+		this.url = new ArrayList<URL>();
 	}
 
 	@XmlElementWrapper(name="urls")
-	public List<URL> getUrls() {
-		return urls;
+	public List<URL> getUrl() {
+		return url;
 	}
 
-	public void setUrls(List<URL> urls) {
-		this.urls = urls;
+	public void setUrl(List<URL> url) {
+		this.url = url;
+	}
+	
+	public boolean addUrl(URL url){
+		return this.url.add(url);
 	}
 	
 }

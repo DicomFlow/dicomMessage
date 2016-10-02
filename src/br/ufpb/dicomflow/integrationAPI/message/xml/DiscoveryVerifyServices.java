@@ -23,91 +23,42 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="result")
-public class Result {
+@XmlRootElement(name="service")
+public class DiscoveryVerifyServices extends Service {
 	
-	private String originalMessageID;
-	private String timestamp;
-	private Completed completed;
+	public static final String DISCOVERY_VERIFY_SERVICES_NAME = "Discovery";
+	public static final String DISCOVERY_VERIFY_SERVICES_ACTION = "VerifyServices";
+	public static final String DISCOVERY_VERIFY_SERVICES_VERSION = "1.0";
 	
-	private Data data;
+	private String timezone;
+	private int priority;
 	
-	private List<Object> object;
-	private List<URL> url;
 	private List<ServiceDescriptor> serviceDescriptor;
 	
-	
-	
-	public Result(){
-		this.object = new ArrayList<Object>();
-		this.url = new ArrayList<URL>();
+	public DiscoveryVerifyServices(){
+		super.setName(DISCOVERY_VERIFY_SERVICES_NAME);
+		super.setAction(DISCOVERY_VERIFY_SERVICES_ACTION);
+		super.setVersion(DISCOVERY_VERIFY_SERVICES_VERSION);
+		super.setType(ServiceIF.DISCOVERY_VERIFY_SERVICES);
 		this.serviceDescriptor = new ArrayList<ServiceDescriptor>();
 	}
-	
-		
-	public String getOriginalMessageID() {
-		return originalMessageID;
+
+	public String getTimezone() {
+		return timezone;
 	}
 
-	public void setOriginalMessageID(String originalMessageID) {
-		this.originalMessageID = originalMessageID;
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
 	}
 
-	public String getTimestamp() {
-		return timestamp;
+	public int getPriority() {
+		return priority;
 	}
 
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
-	}
-	
-	public Completed getCompleted() {
-		return completed;
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
-	public void setCompleted(Completed completed) {
-		this.completed = completed;
-	}
-	
-
-	public Data getData() {
-		return data;
-	}
-
-
-	public void setData(Data data) {
-		this.data = data;
-	}
-
-
-	public List<Object> getObject() {
-		return object;
-	}
-
-	@XmlElementWrapper(name="objects")
-	public void setObject(List<Object> object) {
-		this.object = object;
-	}
-	
-	public boolean addObject(Object object){
-		return this.object.add(object);
-	}
-
-
-	public List<URL> getUrl() {
-		return url;
-	}
-
-	@XmlElementWrapper(name="urls")
-	public void setUrl(List<URL> url) {
-		this.url = url;
-	}
-	
-	public boolean addUrl(URL url){
-		return this.url.add(url);
-	}
-
-	
 	public List<ServiceDescriptor> getServiceDescriptor() {
 		return serviceDescriptor;
 	}
@@ -122,7 +73,5 @@ public class Result {
 	}
 	
 	
-
-			
 	
 }

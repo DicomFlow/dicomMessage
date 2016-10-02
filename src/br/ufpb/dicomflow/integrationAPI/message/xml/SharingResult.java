@@ -17,6 +17,7 @@
  */
 package br.ufpb.dicomflow.integrationAPI.message.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -36,6 +37,7 @@ public class SharingResult extends Service {
 		super.setAction(SHARING_RESULT_ACTION);
 		super.setVersion(SHARING_RESULT_NAME);
 		super.setType(ServiceIF.SHARING_RESULT);
+		this.result = new ArrayList<Result>();
 		
 	}
 	
@@ -46,6 +48,10 @@ public class SharingResult extends Service {
 
 	public List<Result> getResult() {
 		return result;
+	}
+	
+	public boolean addResult(Result result){
+		return this.result.add(result);
 	}
 
 

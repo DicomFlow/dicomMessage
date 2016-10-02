@@ -17,6 +17,7 @@
  */
 package br.ufpb.dicomflow.integrationAPI.message.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -28,15 +29,17 @@ public class StorageDelete extends Service {
 	public static final String STORAGE_DELETE_NAME = "Storage";
 	public static final String STORAGE_DELETE_ACTION = "Delete";
 	public static final String STORAGE_DELETE_VERSION = "1.0";		
+	
+	private List<Object> object;
 		
 	public StorageDelete(){
 		super.setName(STORAGE_DELETE_NAME);
 		super.setAction(STORAGE_DELETE_ACTION);
 		super.setVersion(STORAGE_DELETE_VERSION);
 		super.setType(ServiceIF.STORAGE_DELETE);
+		this.object = new ArrayList<Object>();
 	}
 	
-	private List<Object> object;
 
 	public List<Object> getObject() {
 		return object;
@@ -45,6 +48,10 @@ public class StorageDelete extends Service {
 	@XmlElementWrapper(name="objects")
 	public void setObject(List<Object> object) {
 		this.object = object;
+	}
+	
+	public boolean addObject(Object object){
+		return this.object.add(object);
 	}
 
 }

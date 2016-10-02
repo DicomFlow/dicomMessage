@@ -23,39 +23,14 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(name="url")
-public class URL {
+@XmlType(name="search")
+public class Search {
 	
-	private String value;
-	private Credentials credentials;
 	
 	private List<Patient> patient;
 	
-	public URL(){
+	public Search(){
 		this.patient = new ArrayList<Patient>();
-	}
-	
-	public URL(String value, Credentials credentials){
-		this.value = value;
-		this.credentials = credentials;
-		this.patient = new ArrayList<Patient>();
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	@XmlAttribute
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public Credentials getCredentials() {
-		return credentials;
-	}
-
-	public void setCredentials(Credentials credentials) {
-		this.credentials = credentials;
 	}
 
 	public List<Patient> getPatient() {

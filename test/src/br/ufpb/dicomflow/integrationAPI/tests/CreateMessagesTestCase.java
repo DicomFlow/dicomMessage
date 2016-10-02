@@ -67,7 +67,7 @@ public class CreateMessagesTestCase extends GenericTestCase {
 		
 		List<Object> objects = new ArrayList<Object>();
 		objects.add(obj1);
-		result1.setObjects(objects);		
+		result1.setObject(objects);		
 		
 		try {
 			
@@ -144,7 +144,7 @@ public class CreateMessagesTestCase extends GenericTestCase {
 		
 		ArrayList<URL> urls = new ArrayList<URL>();
 		urls.add(url);		
-		sharingPut.setUrls(urls);
+		sharingPut.setUrl(urls);
 
 		try {
 			File file = new File(outputDir + "sharingPut.xml");

@@ -33,7 +33,7 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.Service;
 import br.ufpb.dicomflow.integrationAPI.message.xml.ServiceIF;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageDelete;
 
-public class ServicesTestCase extends GenericTestCase {
+public class ServiceProcessorTestCase extends GenericTestCase {
 	
 	@Test
 	public static void testSendStorageDelete() throws PropertyNotFoundException {
