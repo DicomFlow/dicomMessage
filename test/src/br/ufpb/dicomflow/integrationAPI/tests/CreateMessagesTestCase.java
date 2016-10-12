@@ -33,6 +33,7 @@ import br.ufpb.dicomflow.integrationAPI.message.xml.Credentials;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Object;
 import br.ufpb.dicomflow.integrationAPI.message.xml.Result;
 import br.ufpb.dicomflow.integrationAPI.message.xml.SharingPut;
+import br.ufpb.dicomflow.integrationAPI.message.xml.SharingResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.StorageSave;
 import br.ufpb.dicomflow.integrationAPI.message.xml.URL;
@@ -162,6 +163,50 @@ public class CreateMessagesTestCase extends GenericTestCase {
 			e.printStackTrace();
 		}
 	}
+
+	@Test	
+	public void testSharingResultMessage() {
+
+		SharingResult sharingResult = new SharingResult();
+
+		sharingResult.setMessageID("123456");
+		sharingResult.setTimestamp("12346567346");
+		sharingResult.setTimeout("23123");
+		
+		Result result1 = new Result();
+		result1.setOriginalMessageID("273912873912");
+		result1.setTimestamp("88729371923");
+		
+		Completed completed = new Completed();
+		completed.setStatus("1");
+		completed.setCompletedMessage("Completed message 001 002");
+		result1.setCompleted(completed);
+		
+		Object obj1 = new Object();
+		obj1.setId("12345");
+		obj1.setType("objType1");
+		
+		List<Result> results = new ArrayList<Result>();
+		results.add(result1);
+
+		sharingResult.setResult(results);
+		try {
+			File file = new File(outputDir + "sharingResult.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(SharingResult.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+			jaxbMarshaller.marshal(sharingResult, file);
+			jaxbMarshaller.marshal(sharingResult, System.out);
+			
+			assertTrue(file.exists() && file.length() > 0);
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 
 }
