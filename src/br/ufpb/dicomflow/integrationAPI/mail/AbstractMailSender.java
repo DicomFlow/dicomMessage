@@ -133,6 +133,12 @@ public abstract class AbstractMailSender implements MailSenderIF {
 			
 
 			Message message = new MimeMessage(session);
+			try {
+				message.setText(" . ");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			message = getHeadBuilder().buildHead(message, service, getContentBuilder());
 			
