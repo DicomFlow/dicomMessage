@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Danilo
  *
  */
-@XmlType(name="actionDescriptor" , propOrder={ "name", "status"})
+@XmlType(name="actionDescriptor" , propOrder={ "name", "status", "fieldDescriptor"})
 public class ActionDescriptor {
 	
 	private String name;
