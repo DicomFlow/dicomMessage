@@ -49,7 +49,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.log.Logger;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
@@ -205,9 +205,9 @@ public class ReadService{
 		
 		Logger.v(rb.getString("start-receive-service"));
 		
-		MailAuthenticatorIF mailAuthenticator =  new SMTPAuthenticator(properties.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), properties.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
+		MailAuthenticatorIF mailAuthenticator =  new SMTPAuthenticator(properties.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), properties.getProperty(DicomMessageProperties.AUTHENTICATION_PASSWORD));
 		MailServiceExtractorIF mailServiceExtractor = new SMTPServiceExtractor();
-		MailMessageReaderIF mailMessageReader = new SMTPMessageReader(properties.getProperty(IntegrationAPIProperties.PROVIDER_HOST), properties.getProperty(IntegrationAPIProperties.PROVIDER_FOLDER));
+		MailMessageReaderIF mailMessageReader = new SMTPMessageReader(properties.getProperty(DicomMessageProperties.PROVIDER_HOST), properties.getProperty(DicomMessageProperties.PROVIDER_FOLDER));
 		
 		SMTPReceiver receiver = new SMTPReceiver();
 		receiver.setProperties(properties);

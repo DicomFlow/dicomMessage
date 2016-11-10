@@ -24,7 +24,7 @@ import java.util.Properties;
 
 import org.junit.Test;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
@@ -54,7 +54,7 @@ public class EmailTestCase extends GenericTestCase {
 	public void testReceive() throws PropertyNotFoundException {	
 		
 		
-		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		Properties props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
@@ -102,12 +102,12 @@ public class EmailTestCase extends GenericTestCase {
 		objects.add(obj2);
 		storageDelete.setObject(objects);
 						
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getSendProperties();
 		
 
 		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
-        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
+        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), DicomMessageProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
         MailContentBuilderIF smtpSimpleContentStrategy = new SMTPContentBuilder();
         
         SMTPSender sender = new SMTPSender();
@@ -143,11 +143,11 @@ public class EmailTestCase extends GenericTestCase {
 		sharingPut.setUrl(urls);
 						
 			
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getSendProperties();
 		
 		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
-        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
+        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), DicomMessageProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
         MailContentBuilderIF smtpSimpleContentStrategy = new SMTPContentBuilder();
         
         SMTPSender sender = new SMTPSender();
@@ -162,12 +162,12 @@ public class EmailTestCase extends GenericTestCase {
 	@Test
 	public static void testeReadUnkownService() throws PropertyNotFoundException{
 												
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getSendProperties();
 		
 
 		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
-        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
+        MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), DicomMessageProperties.getInstance().getProperty("authentication.login.2"), props.getProperty("domain"));
         MailContentBuilderIF smtpSimpleContentStrategy = new SMTPContentBuilder();
         
         SMTPSender sender = new SMTPSender();
@@ -211,9 +211,9 @@ public class EmailTestCase extends GenericTestCase {
 		
         sender.send(otherType);
         
-        props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+        props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
-        MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+        MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(DicomMessageProperties.getInstance().getProperty("authentication.login.2"), DicomMessageProperties.getInstance().getProperty("authentication.password.2"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor2 = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();

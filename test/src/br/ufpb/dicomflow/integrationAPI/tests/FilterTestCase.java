@@ -43,7 +43,7 @@ import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
@@ -71,11 +71,11 @@ public class FilterTestCase extends GenericTestCase {
 	@Test
 	public void testServiceTypeFilter() throws PropertyNotFoundException {	
 
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(DicomMessageProperties.getInstance().getProperty("authentication.login.2"), DicomMessageProperties.getInstance().getProperty("authentication.password.2"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		
@@ -99,11 +99,11 @@ public class FilterTestCase extends GenericTestCase {
 	@Test
 	public void testDateFilter() throws PropertyNotFoundException {	
 
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(DicomMessageProperties.getInstance().getProperty("authentication.login.2"), DicomMessageProperties.getInstance().getProperty("authentication.password.2"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();
@@ -137,11 +137,11 @@ public class FilterTestCase extends GenericTestCase {
 	@Test
 	public void testDateAndServiceTypeFilter() throws PropertyNotFoundException {	
 
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(DicomMessageProperties.getInstance().getProperty("authentication.login.2"), DicomMessageProperties.getInstance().getProperty("authentication.password.2"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();
@@ -176,11 +176,11 @@ public class FilterTestCase extends GenericTestCase {
 	@Test
 	public void testIdMessageFilter() throws PropertyNotFoundException {	
 
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
-		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(IntegrationAPIProperties.getInstance().getProperty("authentication.login.2"), IntegrationAPIProperties.getInstance().getProperty("authentication.password.2"));
+		MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(DicomMessageProperties.getInstance().getProperty("authentication.login.2"), DicomMessageProperties.getInstance().getProperty("authentication.password.2"));
 		MailMessageReaderIF smtpMesssaStrategy = new SMTPMessageReader(props.getProperty("provider.host"), props.getProperty("provider.folder"));
 		MailServiceExtractorIF serviceExtractor = new SMTPServiceExtractor();
 		SMTPReceiver receiver = new SMTPReceiver();

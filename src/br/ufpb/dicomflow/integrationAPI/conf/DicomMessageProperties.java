@@ -23,7 +23,7 @@ import java.util.Properties;
 
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 
-public class IntegrationAPIProperties {
+public class DicomMessageProperties {
 	
 	public static final String DOMAIN = "domain";
 	public static final String MAIL_DEBUG = "mail.debug";
@@ -47,19 +47,19 @@ public class IntegrationAPIProperties {
 
 	
 	public static final String CONFIG_FILE_PATH = "conf/config.properties";
-	private static IntegrationAPIProperties instance;
+	private static DicomMessageProperties instance;
 	private Properties properties;
 	
 	
-	public static IntegrationAPIProperties getInstance() {
+	public static DicomMessageProperties getInstance() {
 		if (instance == null) {
-			instance = new IntegrationAPIProperties();
+			instance = new DicomMessageProperties();
 		}
 		return instance;
 	}
 
 	
-	private IntegrationAPIProperties () {
+	private DicomMessageProperties () {
 		super();		
 		properties = new Properties();
 		
@@ -80,7 +80,7 @@ public class IntegrationAPIProperties {
 	
 	public static String findAppDir() {
 		String path = "";
-		File dir = new File(IntegrationAPIProperties.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		File dir = new File(DicomMessageProperties.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		path = dir.toString();		
 		return path;
 	}

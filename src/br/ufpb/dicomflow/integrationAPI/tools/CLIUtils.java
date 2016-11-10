@@ -24,7 +24,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.log.LogSeverity;
 import br.ufpb.dicomflow.integrationAPI.log.Logger;
@@ -89,7 +89,7 @@ public class CLIUtils {
 		
 		String file = cl.getOptionValue(PROPERTIES_OPTION);
 		
-		IntegrationAPIProperties propertiesLoader = IntegrationAPIProperties.getInstance();
+		DicomMessageProperties propertiesLoader = DicomMessageProperties.getInstance();
 		propertiesLoader.load(file);
 		switch (propertyType) {
 		case SEND_PROPERTIES:

@@ -41,7 +41,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.log.Logger;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
@@ -196,8 +196,8 @@ public class SendService {
 		
 		Logger.v(rb.getString("start-send-service"));
 		
-		MailAuthenticatorIF mailAuthenticator =  new SMTPAuthenticator(properties.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), properties.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
-		MailHeadBuilderIF mailHeadBuilder = new SMTPHeadBuilder(properties.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), cl.getOptionValue(RECEIVER_OPTION), properties.getProperty(IntegrationAPIProperties.DOMAIN));
+		MailAuthenticatorIF mailAuthenticator =  new SMTPAuthenticator(properties.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), properties.getProperty(DicomMessageProperties.AUTHENTICATION_PASSWORD));
+		MailHeadBuilderIF mailHeadBuilder = new SMTPHeadBuilder(properties.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), cl.getOptionValue(RECEIVER_OPTION), properties.getProperty(DicomMessageProperties.DOMAIN));
 		MailContentBuilderIF mailContentBuilder = new SMTPContentBuilder();
 		
 		SMTPSender sender = new SMTPSender();

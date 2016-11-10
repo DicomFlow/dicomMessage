@@ -29,7 +29,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
@@ -62,8 +62,8 @@ public class CertificateTestCase extends GenericTestCase {
 		File attachment = new File("./bin/br/ufpb/dicomflow/integrationAPI/tests/dicommessage.crt");
 						
 			
-		IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
+		DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getSendProperties();
 
         MailAuthenticatorIF smtpAuthenticatorStrategy =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));
         MailHeadBuilderIF smtpHeadStrategy = new SMTPHeadBuilder(props.getProperty("authentication.login"), props.getProperty("authentication.login"), props.getProperty("domain"));
@@ -83,7 +83,7 @@ public class CertificateTestCase extends GenericTestCase {
 		FilterIF filter = new SMTPFilter();
 		filter.setIdMessage(messageID+"@"+props.getProperty("domain"));
 		
-		props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
 		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));

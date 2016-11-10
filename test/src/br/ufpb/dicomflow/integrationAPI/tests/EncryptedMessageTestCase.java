@@ -29,7 +29,7 @@ import java.util.Properties;
 
 import org.junit.Test;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailAuthenticatorIF;
 import br.ufpb.dicomflow.integrationAPI.mail.MailContentBuilderIF;
@@ -84,8 +84,8 @@ public class EncryptedMessageTestCase extends GenericTestCase {
 			
 		
         
-        IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-		Properties props = IntegrationAPIProperties.getInstance().getSendProperties();
+        DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+		Properties props = DicomMessageProperties.getInstance().getSendProperties();
         
         
         KeyStore keystore = KeyStore.getInstance("JKS");
@@ -134,7 +134,7 @@ public class EncryptedMessageTestCase extends GenericTestCase {
         FilterIF filter = new SMTPFilter();
 		filter.setIdMessage(messageID+"@"+props.getProperty("domain"));
 		
-		props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+		props = DicomMessageProperties.getInstance().getReceiveProperties();
 		
 		
 		MailAuthenticatorIF smtpAuthenticatorStrategy2 =  new SMTPAuthenticator(props.getProperty("authentication.login"), props.getProperty("authentication.password"));

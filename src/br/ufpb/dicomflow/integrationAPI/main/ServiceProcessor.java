@@ -23,7 +23,7 @@ import java.security.cert.X509Certificate;
 import java.util.List;
 import java.util.Properties;
 
-import br.ufpb.dicomflow.integrationAPI.conf.IntegrationAPIProperties;
+import br.ufpb.dicomflow.integrationAPI.conf.DicomMessageProperties;
 import br.ufpb.dicomflow.integrationAPI.exceptions.PropertyNotFoundException;
 import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
 import br.ufpb.dicomflow.integrationAPI.mail.FilterIF;
@@ -88,16 +88,16 @@ public class ServiceProcessor {
 		obj.setTimestamp(System.currentTimeMillis()+"");
 		
 		if(props == null){
-			IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-			props = IntegrationAPIProperties.getInstance().getSendProperties();
+			DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+			props = DicomMessageProperties.getInstance().getSendProperties();
 		}
 		
 		if (mailAuthenticator == null) {
-			mailAuthenticator =  new SMTPAuthenticator(props.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), props.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
+			mailAuthenticator =  new SMTPAuthenticator(props.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), props.getProperty(DicomMessageProperties.AUTHENTICATION_PASSWORD));
 		}
 		
 		if (mailHeadBuilder == null) {
-			mailHeadBuilder = new SMTPHeadBuilder(props.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), destinationMail, props.getProperty(IntegrationAPIProperties.DOMAIN));
+			mailHeadBuilder = new SMTPHeadBuilder(props.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), destinationMail, props.getProperty(DicomMessageProperties.DOMAIN));
 		}else{
 			mailHeadBuilder.setTo(destinationMail);
 		}
@@ -199,12 +199,12 @@ public class ServiceProcessor {
 			MailServiceExtractorIF mailServiceExtractor, MailMessageReaderIF mailMessageReader)
 			throws PropertyNotFoundException {
 		if(props == null){
-			IntegrationAPIProperties.getInstance().load(IntegrationAPIProperties.CONFIG_FILE_PATH);
-			props = IntegrationAPIProperties.getInstance().getReceiveProperties();
+			DicomMessageProperties.getInstance().load(DicomMessageProperties.CONFIG_FILE_PATH);
+			props = DicomMessageProperties.getInstance().getReceiveProperties();
 		}
 		
 		if (mailAuthenticator == null) {
-			mailAuthenticator =  new SMTPAuthenticator(props.getProperty(IntegrationAPIProperties.AUTHENTICATION_LOGIN), props.getProperty(IntegrationAPIProperties.AUTHENTICATION_PASSWORD));
+			mailAuthenticator =  new SMTPAuthenticator(props.getProperty(DicomMessageProperties.AUTHENTICATION_LOGIN), props.getProperty(DicomMessageProperties.AUTHENTICATION_PASSWORD));
 		}
 		
 		if(mailServiceExtractor == null){
@@ -212,7 +212,7 @@ public class ServiceProcessor {
 		}
 		
 		if(mailMessageReader == null){
-			mailMessageReader = new SMTPMessageReader(props.getProperty(IntegrationAPIProperties.PROVIDER_HOST), props.getProperty(IntegrationAPIProperties.PROVIDER_FOLDER));
+			mailMessageReader = new SMTPMessageReader(props.getProperty(DicomMessageProperties.PROVIDER_HOST), props.getProperty(DicomMessageProperties.PROVIDER_FOLDER));
 		}
 		
 		SMTPReceiver receiver = new SMTPReceiver();
