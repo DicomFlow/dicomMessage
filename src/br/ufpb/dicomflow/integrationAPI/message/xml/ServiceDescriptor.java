@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Danilo
  *
  */
-@XmlType(name="serviceDescriptor" , propOrder={ "name", "status"})
+@XmlType(name="serviceDescriptor" , propOrder={ "name", "status", "actionDescriptor"})
 public class ServiceDescriptor {
 	
 	private String name;
