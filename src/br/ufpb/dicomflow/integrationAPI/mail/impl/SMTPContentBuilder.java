@@ -17,9 +17,11 @@
  */
 package br.ufpb.dicomflow.integrationAPI.mail.impl;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -177,7 +179,7 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 			}
 			for (int i = 0; i < content.getCount(); i++) {
 
-				Part part = content.getBodyPart(i);
+				BodyPart part = content.getBodyPart(i);
 				// pegando um tipo do conteúdo
 				String contentType = part.getContentType();
 
@@ -185,8 +187,15 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 				if (contentType.toLowerCase().startsWith("text/xml")) {
 					
 					StringBuffer xmlStr = new StringBuffer();
-					xmlStr.append(part.getContent().toString());
-					//System.out.println("O XML DO SERVICO \n" + xmlStr);
+					
+					BufferedReader br = new BufferedReader(new InputStreamReader((InputStream)part.getInputStream()));
+					String oneLine = "";
+					while ( (oneLine = br.readLine()) !=  null )
+						xmlStr.append(oneLine);
+					
+					
+//					xmlStr.append(part.getContent().toString());
+//					System.out.println("O XML DO SERVICO \n" + xmlStr.toString());
 
 					ServiceIF service;
 					try {
