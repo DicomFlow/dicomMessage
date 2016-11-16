@@ -131,7 +131,7 @@ public class SMTPHeadBuilder implements MailHeadBuilderIF {
 		map.put(MailXTags.HEAD_BUILDER_X_TAG, getHeaderValue(message, MailXTags.HEAD_BUILDER_X_TAG));
 		map.put(MailXTags.MESSAGE_ID_X_TAG, getHeaderValue(message, MailXTags.MESSAGE_ID_X_TAG));
 		map.put(MailXTags.SERVICE_TYPE_X_TAG, getHeaderValue(message, MailXTags.SERVICE_TYPE_X_TAG));
-		return null;
+		return map;
 	}
 	
 	
