@@ -93,6 +93,11 @@ public interface ServiceIF {
 	 * FindResult Service Identifier
 	 */
 	public static final int FIND_RESULT = 16;
+	
+	/**
+	 * CertificateConfirm Service Identifier
+	 */
+	public static final int CERTIFICATE_CONFIRM = 17;
 
 	public int getType();
 	
