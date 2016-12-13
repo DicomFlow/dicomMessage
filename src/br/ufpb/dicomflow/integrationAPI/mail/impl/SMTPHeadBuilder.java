@@ -60,7 +60,7 @@ public class SMTPHeadBuilder implements MailHeadBuilderIF {
 	        
 	        message.setSubject(service.getName()+"-"+service.getAction());
 	        
-	        message.addHeader(MailXTags.MESSAGE_ID_X_TAG, service.getMessageID());
+	        message.addHeader(MailXTags.MESSAGE_ID_X_TAG, MailXTags.buildMessageIDXTag(service.getMessageID(),this.domain));
 	        message.addHeader(MailXTags.SERVICE_TYPE_X_TAG, String.valueOf(service.getType()));
 			message.addHeader(MailXTags.CONTENT_BUILDER_X_TAG, String.valueOf(contentBuilder.getType()));
 	        
