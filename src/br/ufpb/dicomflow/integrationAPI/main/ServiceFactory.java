@@ -19,6 +19,7 @@ package br.ufpb.dicomflow.integrationAPI.main;
 
 import br.ufpb.dicomflow.integrationAPI.exceptions.ServiceCreationException;
 import br.ufpb.dicomflow.integrationAPI.message.xml.BasicService;
+import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateConfirm;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateRequest;
 import br.ufpb.dicomflow.integrationAPI.message.xml.CertificateResult;
 import br.ufpb.dicomflow.integrationAPI.message.xml.DiscoveryVerifyAllServices;
@@ -67,6 +68,9 @@ public class ServiceFactory {
 			break;
 		case ServiceIF.CERTIFICATE_RESULT:
 			service = createCertificateResult();
+			break;
+		case ServiceIF.CERTIFICATE_CONFIRM:
+			service = createCertificateConfirm();
 			break;
 		case ServiceIF.SHARING_PUT:
 			service = createSharingPut();
@@ -229,6 +233,26 @@ public class ServiceFactory {
 		try {
 			
 			service = createGenericService(CertificateResult.class);
+			
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ServiceCreationException e) {
+			e.printStackTrace();
+		}
+		return service; 
+		
+		
+	}
+	
+	protected static ServiceIF createCertificateConfirm(){
+		
+		ServiceIF service = null;
+		
+		try {
+			
+			service = createGenericService(CertificateConfirm.class);
 			
 		} catch (InstantiationException e) {
 			e.printStackTrace();
