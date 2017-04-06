@@ -9,6 +9,20 @@
 
   <xs:element name="service" nillable="true" type="xs:anyType"/>
 
+  <xs:complexType name="actionDescriptor">
+    <xs:sequence>
+      <xs:element name="fieldDescriptor" type="fieldDescriptor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="status" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="fieldDescriptor">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="status" type="xs:string"/>
+  </xs:complexType>
+
   <xs:complexType name="basicService">
     <xs:complexContent>
       <xs:extension base="service">
@@ -27,6 +41,20 @@
     <xs:attribute name="name" type="xs:string"/>
     <xs:attribute name="action" type="xs:string"/>
     <xs:attribute name="type" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="certificateConfirm">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="credential" type="xs:string" minOccurs="0"/>
+          <xs:element name="domain" type="xs:string" minOccurs="0"/>
+          <xs:element name="mail" type="xs:string" minOccurs="0"/>
+          <xs:element name="port" type="xs:int" minOccurs="0"/>
+          <xs:element name="status" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <xs:complexType name="certificateRequest">
@@ -68,6 +96,138 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="data">
+    <xs:sequence>
+      <xs:element name="bytes" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="filename" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="discoveryVerifyAllServices">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="detail" type="xs:int"/>
+          <xs:element name="priority" type="xs:int"/>
+          <xs:element name="timezone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="discoveryVerifyResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="priority" type="xs:int"/>
+          <xs:element name="result" type="result" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="timezone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="result">
+    <xs:sequence>
+      <xs:element name="completed" type="completed" minOccurs="0"/>
+      <xs:element name="data" type="data" minOccurs="0"/>
+      <xs:element name="objects" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="object" type="object" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="originalMessageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="services" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceDescriptor" type="serviceDescriptor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="timestamp" type="xs:string" minOccurs="0"/>
+      <xs:element name="urls" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="url" type="url" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="object">
+    <xs:sequence>
+      <xs:element name="credential" type="credentials" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="serviceDescriptor">
+    <xs:sequence>
+      <xs:element name="actionDescriptor" type="actionDescriptor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="status" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="url">
+    <xs:sequence>
+      <xs:element name="credentials" type="credentials" minOccurs="0"/>
+      <xs:element name="patient" type="patient" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="patient">
+    <xs:sequence>
+      <xs:element name="study" type="study" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="gender" type="xs:string"/>
+    <xs:attribute name="birthdate" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="study">
+    <xs:sequence>
+      <xs:element name="serie" type="serie" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="type" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="datetime" type="xs:string"/>
+    <xs:attribute name="size" type="xs:long" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="serie">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="bodypart" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="instances" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="discoveryVerifyServices">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="priority" type="xs:int"/>
+          <xs:element name="services" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="serviceDescriptor" type="serviceDescriptor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="timezone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="dispositionFields">
     <xs:sequence/>
   </xs:complexType>
@@ -102,27 +262,97 @@
     <xs:sequence/>
   </xs:complexType>
 
-  <xs:complexType name="object">
-    <xs:sequence>
-      <xs:element name="credential" type="credentials" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:string"/>
-    <xs:attribute name="type" type="xs:string"/>
+  <xs:complexType name="findPut">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="priority" type="xs:int"/>
+          <xs:element name="search" type="search" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="timezone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="result">
+  <xs:complexType name="search">
     <xs:sequence>
-      <xs:element name="completed" type="completed" minOccurs="0"/>
-      <xs:element name="objects" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="objects" type="object" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="originalMessageID" type="xs:string" minOccurs="0"/>
-      <xs:element name="timestamp" type="xs:string" minOccurs="0"/>
+      <xs:element name="patient" type="patient" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="results" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="result" type="result" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="requestPut">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="requestType" type="xs:string" minOccurs="0"/>
+          <xs:element name="url" type="url" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="requestResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="results" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="result" type="result" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sharingPut">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="urls" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="url" type="url" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sharingResult">
+    <xs:complexContent>
+      <xs:extension base="service">
+        <xs:sequence>
+          <xs:element name="results" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="result" type="result" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
 
   <xs:complexType name="storageDelete">
@@ -165,13 +395,6 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType name="url">
-    <xs:sequence>
-      <xs:element name="credentials" type="credentials" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="value" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="storageUpdate">
