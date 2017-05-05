@@ -89,7 +89,8 @@ public class DicomMessageProperties {
 	
 	public String getProperty(String property) throws PropertyNotFoundException{
 		if(properties.getProperty(property) == null || properties.getProperty(property).equals("")){
-			throw new PropertyNotFoundException(property + " not found."); 
+//			throw new PropertyNotFoundException(property + " not found."); 
+			return null;
 		}
 		return properties.getProperty(property);
 	}
@@ -98,32 +99,74 @@ public class DicomMessageProperties {
 	
 	public Properties getSendProperties() throws PropertyNotFoundException{
 		Properties sendProperties = new Properties();
-		sendProperties.put(DOMAIN, getProperty(DOMAIN));
-		sendProperties.put(MAIL_DEBUG, getProperty(MAIL_DEBUG));
-		sendProperties.put(MAIL_SMTP_HOST, getProperty(MAIL_SMTP_HOST));
-		sendProperties.put(MAIL_SMTP_AUTH, getProperty(MAIL_SMTP_AUTH));
-		sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_PORT, getProperty(MAIL_SMTP_SOCKET_FACTORY_PORT));
-		sendProperties.put(MAIL_SMTP_PORT, getProperty(MAIL_SMTP_PORT));
-		sendProperties.put(MAIL_SMTP_STARTTLS_ENABLE, getProperty(MAIL_SMTP_STARTTLS_ENABLE));
-		sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_CLASS, getProperty(MAIL_SMTP_SOCKET_FACTORY_CLASS));
-		sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_FALLBACK, getProperty(MAIL_SMTP_SOCKET_FACTORY_FALLBACK));
-		sendProperties.put(AUTHENTICATION_LOGIN, getProperty(AUTHENTICATION_LOGIN));
-		sendProperties.put(AUTHENTICATION_PASSWORD, getProperty(AUTHENTICATION_PASSWORD));
+		if(getProperty(DOMAIN) != null){
+			sendProperties.put(DOMAIN, getProperty(DOMAIN));
+		}
+		if(getProperty(MAIL_DEBUG) != null){
+			sendProperties.put(MAIL_DEBUG, getProperty(MAIL_DEBUG));
+		}
+		if(getProperty(MAIL_SMTP_HOST) != null){
+			sendProperties.put(MAIL_SMTP_HOST, getProperty(MAIL_SMTP_HOST));
+		}
+		if(getProperty(MAIL_SMTP_AUTH) != null){
+			sendProperties.put(MAIL_SMTP_AUTH, getProperty(MAIL_SMTP_AUTH));
+		}
+		if(getProperty(MAIL_SMTP_SOCKET_FACTORY_PORT) != null){
+			sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_PORT, getProperty(MAIL_SMTP_SOCKET_FACTORY_PORT));
+		}
+		if(getProperty(MAIL_SMTP_PORT) != null){
+			sendProperties.put(MAIL_SMTP_PORT, getProperty(MAIL_SMTP_PORT));
+		}
+		if(getProperty(MAIL_SMTP_STARTTLS_ENABLE) != null){
+			sendProperties.put(MAIL_SMTP_STARTTLS_ENABLE, getProperty(MAIL_SMTP_STARTTLS_ENABLE));
+		}
+		if(getProperty(MAIL_SMTP_SOCKET_FACTORY_CLASS) != null){
+			sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_CLASS, getProperty(MAIL_SMTP_SOCKET_FACTORY_CLASS));
+		}
+		if(getProperty(MAIL_SMTP_SOCKET_FACTORY_FALLBACK) != null){
+			sendProperties.put(MAIL_SMTP_SOCKET_FACTORY_FALLBACK, getProperty(MAIL_SMTP_SOCKET_FACTORY_FALLBACK));
+		}
+		if(getProperty(AUTHENTICATION_LOGIN) != null){
+			sendProperties.put(AUTHENTICATION_LOGIN, getProperty(AUTHENTICATION_LOGIN));
+		}
+		if(getProperty(AUTHENTICATION_PASSWORD) != null){
+			sendProperties.put(AUTHENTICATION_PASSWORD, getProperty(AUTHENTICATION_PASSWORD));
+		}
 		return sendProperties;
 	}
 	
 	public Properties getReceiveProperties() throws PropertyNotFoundException{
 		Properties receiveProperties = new Properties();
-		receiveProperties.put(DOMAIN, getProperty(DOMAIN));
-		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_PORT, getProperty(MAIL_IMAP_SOCKET_FACTORY_PORT));
-		receiveProperties.put(MAIL_IMAP_PORT, getProperty(MAIL_IMAP_PORT));
-		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_CLASS, getProperty(MAIL_IMAP_SOCKET_FACTORY_CLASS));
-		receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_FALLBACK, getProperty(MAIL_IMAP_SOCKET_FACTORY_FALLBACK));
-		receiveProperties.put(MAIL_STORE_PROTOCOL, getProperty(MAIL_STORE_PROTOCOL));
-		receiveProperties.put(AUTHENTICATION_LOGIN, getProperty(AUTHENTICATION_LOGIN));
-		receiveProperties.put(AUTHENTICATION_PASSWORD, getProperty(AUTHENTICATION_PASSWORD));
-		receiveProperties.put(PROVIDER_HOST, getProperty(PROVIDER_HOST));
-		receiveProperties.put(PROVIDER_FOLDER, getProperty(PROVIDER_FOLDER));
+		if(getProperty(DOMAIN) != null){
+			receiveProperties.put(DOMAIN, getProperty(DOMAIN));
+		}
+		if(getProperty(MAIL_IMAP_SOCKET_FACTORY_PORT) != null){
+			receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_PORT, getProperty(MAIL_IMAP_SOCKET_FACTORY_PORT));
+		}
+		if(getProperty(MAIL_IMAP_PORT) != null){
+			receiveProperties.put(MAIL_IMAP_PORT, getProperty(MAIL_IMAP_PORT));
+		}
+		if(getProperty(MAIL_IMAP_SOCKET_FACTORY_CLASS) != null){
+			receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_CLASS, getProperty(MAIL_IMAP_SOCKET_FACTORY_CLASS));
+		}
+		if(getProperty(MAIL_IMAP_SOCKET_FACTORY_FALLBACK) != null){
+			receiveProperties.put(MAIL_IMAP_SOCKET_FACTORY_FALLBACK, getProperty(MAIL_IMAP_SOCKET_FACTORY_FALLBACK));
+		}
+		if(getProperty(MAIL_STORE_PROTOCOL) != null){
+			receiveProperties.put(MAIL_STORE_PROTOCOL, getProperty(MAIL_STORE_PROTOCOL));
+		}
+		if(getProperty(AUTHENTICATION_LOGIN) != null){
+			receiveProperties.put(AUTHENTICATION_LOGIN, getProperty(AUTHENTICATION_LOGIN));
+		}
+		if(getProperty(AUTHENTICATION_PASSWORD) != null){
+			receiveProperties.put(AUTHENTICATION_PASSWORD, getProperty(AUTHENTICATION_PASSWORD));
+		}
+		if(getProperty(PROVIDER_HOST) != null){
+			receiveProperties.put(PROVIDER_HOST, getProperty(PROVIDER_HOST));
+		}
+		if(getProperty(PROVIDER_FOLDER) != null){
+			receiveProperties.put(PROVIDER_FOLDER, getProperty(PROVIDER_FOLDER));
+		}
 		return receiveProperties;
 	}
 	
