@@ -20,8 +20,10 @@ package br.ufpb.dicomflow.integrationAPI.mail.impl;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.mail.Flags;
 import javax.mail.search.AndTerm;
 import javax.mail.search.ComparisonTerm;
+import javax.mail.search.FlagTerm;
 import javax.mail.search.ReceivedDateTerm;
 import javax.mail.search.SearchTerm;
 
@@ -33,6 +35,7 @@ public class SMTPFilter implements FilterIF {
 	private Date finalDate;
 	private Integer serviceType;
 	private String idMessage;
+	private Boolean unreadOnly;
 
 	@Override
 	public Date getFinalDate() {
@@ -52,6 +55,34 @@ public class SMTPFilter implements FilterIF {
 	@Override
 	public Integer getServiceType() {
 		return serviceType;
+	}
+
+	@Override
+	public void setFinalDate(Date finalDate) {
+		this.finalDate = finalDate;
+	}
+
+	@Override
+	public void setIdMessage(String idMessage) {
+		this.idMessage = idMessage;
+	}
+
+	@Override
+	public void setInitialDate(Date initialDate) {
+		this.initialDate = initialDate;
+	}
+
+	@Override
+	public void setServiceType(Integer serviceType) {
+		this.serviceType = serviceType;
+	}
+	
+	public Boolean getUnreadOnly() {
+		return unreadOnly;
+	}
+
+	public void setUnreadOnly(Boolean unreadOnly) {
+		this.unreadOnly = unreadOnly;
 	}
 
 	@Override
@@ -100,28 +131,21 @@ public class SMTPFilter implements FilterIF {
 			}
 			
 		}
+		
+		if(this.getUnreadOnly() != null && this.getUnreadOnly().equals(true)){
+			
+			Flags seen = new Flags(Flags.Flag.SEEN);
+		    FlagTerm unseenFlagTerm = new FlagTerm(seen, false);
+			
+			if(term != null){
+				term = new AndTerm(term, unseenFlagTerm);
+			}else{
+				term = unseenFlagTerm;
+			}
+			
+		}
 		//System.out.println("Term : " + term);
 		return term;
-	}
-
-	@Override
-	public void setFinalDate(Date finalDate) {
-		this.finalDate = finalDate;
-	}
-
-	@Override
-	public void setIdMessage(String idMessage) {
-		this.idMessage = idMessage;
-	}
-
-	@Override
-	public void setInitialDate(Date initialDate) {
-		this.initialDate = initialDate;
-	}
-
-	@Override
-	public void setServiceType(Integer serviceType) {
-		this.serviceType = serviceType;
 	}
 
 }
