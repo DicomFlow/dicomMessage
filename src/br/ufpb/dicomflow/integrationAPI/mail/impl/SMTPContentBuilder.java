@@ -117,6 +117,7 @@ public class SMTPContentBuilder implements MailContentBuilderIF {
 		
 		MimeBodyPart attachment0 = new MimeBodyPart();
 		
+		attachment0.setDisposition("attachment; filename=service.xdf" );
 		attachment0.setContent(str.toString(),"text/xml; charset=UTF-8");
 		
 		multipart.addBodyPart(attachment0);
