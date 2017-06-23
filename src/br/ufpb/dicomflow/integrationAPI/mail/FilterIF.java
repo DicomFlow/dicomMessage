@@ -39,6 +39,10 @@ public interface FilterIF {
 	
 	public String getIdMessage();
 	
+	public Boolean getUnreadOnly();
+
+	public void setUnreadOnly(Boolean unreadOnly);
+	
 	public SearchTerm getTerm();
 	
 	
